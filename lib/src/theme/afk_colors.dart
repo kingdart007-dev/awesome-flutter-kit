@@ -17,4 +17,14 @@ abstract final class AfkColors {
   static const Color darkBackground = Color(0xFF111110);
   static const Color lightSurface = white;
   static const Color darkSurface = charcoal;
+
+  // Semantic feedback colors are separate from the neutral brand foundation.
+  static const Color successForegroundLight = Color(0xFF216E45);
+  static const Color successForegroundDark = Color(0xFF9ADCB3);
+  static const Color successContainerLight = Color(0xFFEAF5EE);
+  static const Color successContainerDark = Color(0xFF1C3929);
+  static const Color warningForegroundLight = Color(0xFF805000);
+  static const Color warningForegroundDark = Color(0xFFFFD08A);
+  static const Color warningContainerLight = Color(0xFFFFF4DE);
+  static const Color warningContainerDark = Color(0xFF3B2D16);
 }
