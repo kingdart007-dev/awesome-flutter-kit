@@ -19,7 +19,9 @@ A product-agnostic, reusable Flutter foundation and UI toolkit for Android and i
 - Theme-aware app bar and controlled bottom navigation
 - Responsive page layout with consistent padding, safe-area handling, and a readable content width
 - Confirmation dialog, floating snackbar feedback, section header, empty-state, loading, and recoverable error-state primitives
-- Nutrition dashboard primitives: photo-first calorie hero, date selector, calorie-budget ring, macro progress, meal diary rows, editable scan estimates, photo-scan entry point, hydration quick-add, fasting summary, and activity diary row\n- Reusable tab bar, reduced-motion content transitions, accessible disclosure sections, and bounded numeric stepper\n- Widget tests and Dart analysis rules
+- Optional nutrition-domain showcase components, kept separate from the general-purpose foundation
+- Reusable tab bar, reduced-motion content transitions, accessible disclosure sections, and bounded numeric stepper
+- Widget tests and Dart analysis rules
 - GitHub Actions quality workflow
 
 ## Accessibility and localization
