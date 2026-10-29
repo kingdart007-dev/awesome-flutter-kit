@@ -1,6 +1,6 @@
-# Mobile UI Kit Scope and Roadmap
+# Product-Agnostic Mobile UI Kit Scope and Roadmap
 
-Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag of unrelated widgets. The goal is to make polished, accessible, responsive app experiences easier to assemble while keeping host apps in control of product logic, navigation, localization, and data.
+Awesome Flutter Kit is a product-agnostic mobile UI system for Android and iOS, not a fitness kit or a bag of unrelated widgets. It should support apps across commerce, productivity, communication, education, media, finance, health, and future categories without forcing any domain into the core. The goal is to make polished, accessible, responsive app experiences easier to assemble while keeping host apps in control of product logic, navigation, localization, and data.\n\n## Product coverage strategy\n\n- **Core first:** finish cross-product foundations, controls, forms, navigation, overlays, feedback, accessibility, localization, and testing.\n- **Patterns second:** build reusable workflows such as onboarding, search/filter, settings, paginated lists, and multi-step forms.\n- **Domain showcases third:** add isolated optional examples for commerce, chat, media, productivity, finance, education, and health only when there is a reusable need.\n- **No domain lock-in:** health/nutrition components remain optional examples and must not dictate core naming, dependencies, navigation, or visual identity.\n- **No pretend integrations:** UI patterns can provide interaction hooks, but API calls, AI, payments, camera access, storage, and other services belong to the host app unless explicitly designed as a separate package.\n
 
 ## Product vocabulary
 
