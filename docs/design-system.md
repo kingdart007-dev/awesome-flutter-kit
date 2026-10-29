@@ -1,6 +1,6 @@
 # Design System
 
-The kit uses a premium-minimal, monochrome foundation. It should feel calm and deliberate rather than decorated.
+The kit uses a product-neutral, premium-minimal, monochrome foundation. It should feel calm and deliberate rather than decorated. This visual language is a shared starting point, not a forced identity: components should remain themeable and usable in many product categories.
 
 ## Visual language
 
