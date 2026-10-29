@@ -5,6 +5,7 @@
 library;
 
 export 'src/components/afk_app_bar.dart';
+export 'src/components/afk_activity_entry_tile.dart';
 export 'src/components/afk_badge.dart';
 export 'src/components/afk_bottom_navigation_bar.dart';
 export 'src/components/afk_bottom_sheet.dart';
@@ -22,6 +23,7 @@ export 'src/components/afk_error_state.dart';
 export 'src/components/afk_icon_button.dart';
 export 'src/components/afk_food_scan_card.dart';
 export 'src/components/afk_food_estimate_tile.dart';
+export 'src/components/afk_fasting_card.dart';
 export 'src/components/afk_hydration_tracker.dart';
 export 'src/components/afk_list_tile.dart';
 export 'src/components/afk_meal_entry_tile.dart';
