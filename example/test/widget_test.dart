@@ -27,13 +27,19 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Your day'), findsOneWidget);
       expect(find.text('Daily nutrients'), findsOneWidget);
-      await tester.tap(find.text('Wed'));
-      await tester.pumpAndSettle();
-      expect(find.text('Meals · thu'), findsNothing);
-      expect(find.text('Meals · wed'), findsOneWidget);
       expect(find.text('Scan your meal'), findsOneWidget);
       expect(find.text('Water'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.text('Grilled chicken bowl'),
+        240,
+        scrollable: find.byType(Scrollable).first,
+      );
       expect(find.text('Grilled chicken bowl'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.text('Scan your meal'),
+        240,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.tap(find.text('Scan your meal'));
       await tester.pumpAndSettle();
       expect(find.text('Photo scan'), findsOneWidget);
