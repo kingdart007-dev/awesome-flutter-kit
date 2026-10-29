@@ -1,0 +1,20 @@
+name: awesome_flutter_kit_example
+description: Interactive showcase for Awesome Flutter Kit.
+publish_to: none
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.7.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  awesome_flutter_kit:
+    path: ..
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
