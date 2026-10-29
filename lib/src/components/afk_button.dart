@@ -49,8 +49,9 @@ class AfkButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(AfkRadius.md),
     );
 
-    final Widget button = switch (variant) {
-      AfkButtonVariant.filled => FilledButton(
+    final Widget button;
+    if (variant == AfkButtonVariant.filled) {
+      button = FilledButton(
         onPressed: enabled ? onPressed : null,
         style: FilledButton.styleFrom(
           shape: shape,
@@ -61,8 +62,9 @@ class AfkButton extends StatelessWidget {
           ),
         ),
         child: child,
-      ),
-      AfkButtonVariant.outlined => OutlinedButton(
+      );
+    } else if (variant == AfkButtonVariant.outlined) {
+      button = OutlinedButton(
         onPressed: enabled ? onPressed : null,
         style: OutlinedButton.styleFrom(
           shape: shape,
@@ -73,8 +75,9 @@ class AfkButton extends StatelessWidget {
           ),
         ),
         child: child,
-      ),
-      AfkButtonVariant.text => TextButton(
+      );
+    } else {
+      button = TextButton(
         onPressed: enabled ? onPressed : null,
         style: TextButton.styleFrom(
           shape: shape,
@@ -85,8 +88,8 @@ class AfkButton extends StatelessWidget {
           ),
         ),
         child: child,
-      ),
-    };
+      );
+    }
 
     return Semantics(
       button: true,
