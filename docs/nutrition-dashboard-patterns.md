@@ -14,7 +14,7 @@ This guide documents a practical, mobile-first flow for calorie and nutrition pr
 
 | Need | Kit pattern | Host-app responsibility |
 | --- | --- | --- |
-| Daily calorie budget | `AfkCalorieRing` | Goal calculation, consumed total, remaining policy |
+| Daily calorie budget | `AfkNutritionHero` or `AfkCalorieRing` | Goal calculation, consumed total, remaining policy |
 | Protein/carbs/fat/fiber and other nutrients | `AfkMacroProgress` | Nutrient data, units, daily targets |
 | Select a diary day | `AfkDateSelector` | Calendar rules, timezone, localized date labels |
 | Add a meal by photo | `AfkFoodScanCard` | Camera/gallery permission, capture, upload, AI inference |
@@ -26,7 +26,7 @@ This guide documents a practical, mobile-first flow for calorie and nutrition pr
 
 ## Required states for a real scan flow
 
-- **Idle:** camera or image-selection action with a concise explanation.
+- **Idle:** a prominent photo-first action with a concise explanation and clear alternatives.
 - **Permission denied:** explain why access is needed and offer a manual/search alternative.
 - **Selecting image:** show progress without freezing navigation.
 - **Analyzing:** preserve the selected image and provide a clear cancel/retry path.
