@@ -18,7 +18,7 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Consistent checkbox and switch tiles for forms and settings, with disabled states
 - Theme-aware app bar and controlled bottom navigation
 - Responsive page layout with consistent padding, safe-area handling, and a readable content width
-- Section header, empty-state, loading, and recoverable error-state primitives
+- Confirmation dialog, floating snackbar feedback, section header, empty-state, loading, and recoverable error-state primitives
 - Widget tests and Dart analysis rules
 - GitHub Actions quality workflow
 
