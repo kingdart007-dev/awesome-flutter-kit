@@ -811,6 +811,38 @@ void main() {
     });
   });
 
+
+  group('AfkProgressBar', () {
+    testWidgets('shows a label and determinate percentage', (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: AfkProgressBar(
+              value: 0.6,
+              label: 'Upload',
+              showValue: true,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('Upload'), findsOneWidget);
+      expect(find.text('60%'), findsOneWidget);
+      expect(find.byType(LinearProgressIndicator), findsOneWidget);
+    });
+
+    testWidgets('supports indeterminate progress without a value label', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(body: AfkProgressBar(label: 'Loading', value: null)),
+        ),
+      );
+      expect(find.text('Loading'), findsOneWidget);
+      expect(find.byType(LinearProgressIndicator), findsOneWidget);
+    });
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
