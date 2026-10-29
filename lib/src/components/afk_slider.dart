@@ -51,7 +51,9 @@ class AfkSlider extends StatelessWidget {
                   ),
                 if (showValue)
                   Text(
-                    value.toStringAsFixed(value.truncateToDouble() == value ? 0 : 1),
+                    value.toStringAsFixed(
+                      value.truncateToDouble() == value ? 0 : 1,
+                    ),
                     style: theme.textTheme.labelLarge,
                   ),
               ],

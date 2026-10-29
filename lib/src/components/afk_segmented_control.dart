@@ -46,7 +46,8 @@ class AfkSegmentedControl<T> extends StatelessWidget {
                   option: option,
                   selected: option.value == value,
                   enabled: onChanged != null,
-                  onTap: onChanged == null ? null : () => onChanged!(option.value),
+                  onTap:
+                      onChanged == null ? null : () => onChanged!(option.value),
                 ),
               ),
           ],
@@ -86,15 +87,16 @@ class _Segment<T> extends StatelessWidget {
           decoration: BoxDecoration(
             color: selected ? colors.surface : Colors.transparent,
             borderRadius: BorderRadius.circular(AfkRadius.sm),
-            boxShadow: selected
-                ? [
-                    BoxShadow(
-                      color: colors.shadow.withValues(alpha: 0.06),
-                      blurRadius: 4,
-                      offset: const Offset(0, 1),
-                    ),
-                  ]
-                : null,
+            boxShadow:
+                selected
+                    ? [
+                      BoxShadow(
+                        color: colors.shadow.withValues(alpha: 0.06),
+                        blurRadius: 4,
+                        offset: const Offset(0, 1),
+                      ),
+                    ]
+                    : null,
           ),
           child: Material(
             color: Colors.transparent,
@@ -113,10 +115,12 @@ class _Segment<T> extends StatelessWidget {
                       option.label,
                       textAlign: TextAlign.center,
                       style: theme.textTheme.labelLarge?.copyWith(
-                        color: selected
-                            ? colors.onSurface
-                            : colors.onSurfaceVariant,
-                        fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
+                        color:
+                            selected
+                                ? colors.onSurface
+                                : colors.onSurfaceVariant,
+                        fontWeight:
+                            selected ? FontWeight.w600 : FontWeight.w500,
                       ),
                     ),
                   ),
