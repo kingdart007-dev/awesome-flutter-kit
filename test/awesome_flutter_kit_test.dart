@@ -4,6 +4,54 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkFoodScanCard', () {
+    testWidgets('presents the scan action and handles taps', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkFoodScanCard(
+              title: 'Scan meal',
+              description: 'Take a photo of your food',
+              actionLabel: 'Start scan',
+              onTap: () => tapped = true,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Scan meal'), findsOneWidget);
+      expect(find.text('Start scan'), findsOneWidget);
+      await tester.tap(find.byType(AfkFoodScanCard));
+      expect(tapped, isTrue);
+    });
+  });
+
+  group('AfkHydrationTracker', () {
+    testWidgets('reports the configured water increment', (tester) async {
+      int? added;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkHydrationTracker(
+              currentMl: 500,
+              goalMl: 2000,
+              title: 'Water',
+              amountLabel: 'One glass at a time',
+              addTooltip: 'Add water',
+              onAdd: (amount) => added = amount,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('500 / 2000 ml'), findsOneWidget);
+      await tester.tap(find.byTooltip('Add water'));
+      expect(added, 250);
+    });
+  });
+
+
   group('AfkCalorieRing', () {
     testWidgets('shows calorie total and remaining budget', (tester) async {
       await tester.pumpWidget(
