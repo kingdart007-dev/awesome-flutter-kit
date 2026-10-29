@@ -611,7 +611,6 @@ void main() {
     });
   });
 
-
   group('AfkRadioTile', () {
     testWidgets('shows title and subtitle', (tester) async {
       await tester.pumpWidget(
@@ -636,9 +635,7 @@ void main() {
     testWidgets('renders a sized, excluded placeholder', (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: AfkSkeleton(width: 120, height: 20),
-          ),
+          home: Scaffold(body: AfkSkeleton(width: 120, height: 20)),
         ),
       );
       final skeleton = tester.widget<AfkSkeleton>(find.byType(AfkSkeleton));
