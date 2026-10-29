@@ -20,6 +20,7 @@ export 'src/components/afk_loading_indicator.dart';
 export 'src/components/afk_page.dart';
 export 'src/components/afk_pressable.dart';
 export 'src/components/afk_radio_tile.dart';
+export 'src/components/afk_search_field.dart';
 export 'src/components/afk_section_header.dart';
 export 'src/components/afk_segmented_control.dart';
 export 'src/components/afk_skeleton.dart';
