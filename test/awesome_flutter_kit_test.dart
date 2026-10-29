@@ -186,28 +186,29 @@ void main() {
   testWidgets(
     'AfkDivider uses theme color and configurable spacing',
     (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AfkTheme.light(),
-        home: const Scaffold(
-          body: AfkDivider(spacing: 12, indent: 8, endIndent: 16),
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: const Scaffold(
+            body: AfkDivider(spacing: 12, indent: 8, endIndent: 16),
+          ),
         ),
-      ),
-    );
+      );
 
-    final padding = tester.widget<Padding>(
-      find.ancestor(
-        of: find.byType(Divider),
-        matching: find.byType(Padding),
-      ).first,
-    );
-    final divider = tester.widget<Divider>(find.byType(Divider));
+      final padding = tester.widget<Padding>(
+        find.ancestor(
+          of: find.byType(Divider),
+          matching: find.byType(Padding),
+        ).first,
+      );
+      final divider = tester.widget<Divider>(find.byType(Divider));
 
-    expect(padding.padding, const EdgeInsets.symmetric(vertical: 12));
-    expect(divider.indent, 8);
-    expect(divider.endIndent, 16);
-    expect(divider.color, AfkTheme.light().dividerColor);
-  });
+      expect(padding.padding, const EdgeInsets.symmetric(vertical: 12));
+      expect(divider.indent, 8);
+      expect(divider.endIndent, 16);
+      expect(divider.color, AfkTheme.light().dividerColor);
+    },
+  );
 
   group('AfkTextField', () {
     testWidgets('shows label, hint, and helper text', (tester) async {
@@ -278,7 +279,9 @@ void main() {
   });
 
   group('AfkCheckboxTile', () {
-    testWidgets('renders title and subtitle and reports changes', (tester) async {
+    testWidgets(
+      'renders title and subtitle and reports changes',
+      (tester) async {
       bool? changedValue;
 
       await tester.pumpWidget(
@@ -296,7 +299,10 @@ void main() {
       );
 
       expect(find.text('Remember me'), findsOneWidget);
-      expect(find.text('Keep this preference on this device.'), findsOneWidget);
+      expect(
+        find.text('Keep this preference on this device.'),
+        findsOneWidget,
+      );
       await tester.tap(find.byType(CheckboxListTile));
       expect(changedValue, isTrue);
     });
