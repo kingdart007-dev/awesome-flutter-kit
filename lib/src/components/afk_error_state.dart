@@ -48,10 +48,7 @@ class AfkErrorState extends StatelessWidget {
             ),
             if (onRetry != null && retryLabel != null) ...[
               const SizedBox(height: AfkSpacing.lg),
-              FilledButton.tonal(
-                onPressed: onRetry,
-                child: Text(retryLabel!),
-              ),
+              FilledButton.tonal(onPressed: onRetry, child: Text(retryLabel!)),
             ],
           ],
         ),

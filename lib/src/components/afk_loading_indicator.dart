@@ -4,11 +4,7 @@ import '../theme/afk_spacing.dart';
 
 /// A centered progress indicator with optional explanatory copy.
 class AfkLoadingIndicator extends StatelessWidget {
-  const AfkLoadingIndicator({
-    this.label,
-    this.size = 24,
-    super.key,
-  });
+  const AfkLoadingIndicator({this.label, this.size = 24, super.key});
 
   final String? label;
   final double size;

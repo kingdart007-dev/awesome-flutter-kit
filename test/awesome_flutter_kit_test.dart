@@ -23,10 +23,7 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: Scaffold(
-            body: AfkButton(
-              label: 'Continue',
-              onPressed: () => tapped = true,
-            ),
+            body: AfkButton(label: 'Continue', onPressed: () => tapped = true),
           ),
         ),
       );
@@ -64,10 +61,7 @@ void main() {
           home: const Scaffold(
             body: Column(
               children: [
-                AfkButton(
-                  label: 'Filled',
-                  onPressed: null,
-                ),
+                AfkButton(label: 'Filled', onPressed: null),
                 AfkButton(
                   label: 'Outlined',
                   variant: AfkButtonVariant.outlined,
@@ -90,61 +84,52 @@ void main() {
     });
   });
 
-  testWidgets(
-    'AfkSectionHeader shows title, subtitle, and trailing content',
-    (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AfkTheme.light(),
-          home: const Scaffold(
-            body: AfkSectionHeader(
-              title: 'Recent activity',
-              subtitle: 'Your latest entries',
-              trailing: Icon(Icons.more_horiz),
-            ),
+  testWidgets('AfkSectionHeader shows title, subtitle, and trailing content', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AfkTheme.light(),
+        home: const Scaffold(
+          body: AfkSectionHeader(
+            title: 'Recent activity',
+            subtitle: 'Your latest entries',
+            trailing: Icon(Icons.more_horiz),
           ),
         ),
-      );
+      ),
+    );
 
-      expect(find.text('Recent activity'), findsOneWidget);
-      expect(find.text('Your latest entries'), findsOneWidget);
-      expect(find.byIcon(Icons.more_horiz), findsOneWidget);
-    },
-  );
+    expect(find.text('Recent activity'), findsOneWidget);
+    expect(find.text('Your latest entries'), findsOneWidget);
+    expect(find.byIcon(Icons.more_horiz), findsOneWidget);
+  });
 
-  testWidgets(
-    'AfkPage applies readable width and renders its child',
-    (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-            body: AfkPage(
-              child: Text('Page content'),
-            ),
-          ),
-        ),
-      );
+  testWidgets('AfkPage applies readable width and renders its child', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(body: AfkPage(child: Text('Page content'))),
+      ),
+    );
 
-      expect(find.text('Page content'), findsOneWidget);
+    expect(find.text('Page content'), findsOneWidget);
 
-      final constraints = tester.widget<ConstrainedBox>(
-        find.descendant(
-          of: find.byType(AfkPage),
-          matching: find.byType(ConstrainedBox),
-        ),
-      );
-      expect(constraints.constraints.maxWidth, 640);
-    },
-  );
+    final constraints = tester.widget<ConstrainedBox>(
+      find.descendant(
+        of: find.byType(AfkPage),
+        matching: find.byType(ConstrainedBox),
+      ),
+    );
+    expect(constraints.constraints.maxWidth, 640);
+  });
 
   testWidgets('AfkPage can disable its safe area', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
-          body: AfkPage(
-            safeArea: false,
-            child: Text('Edge content'),
-          ),
+          body: AfkPage(safeArea: false, child: Text('Edge content')),
         ),
       ),
     );
@@ -183,32 +168,30 @@ void main() {
     expect(find.text('Narrow content'), findsOneWidget);
   });
 
-  testWidgets(
-    'AfkDivider uses theme color and configurable spacing',
-    (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AfkTheme.light(),
-          home: const Scaffold(
-            body: AfkDivider(spacing: 12, indent: 8, endIndent: 16),
-          ),
+  testWidgets('AfkDivider uses theme color and configurable spacing', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AfkTheme.light(),
+        home: const Scaffold(
+          body: AfkDivider(spacing: 12, indent: 8, endIndent: 16),
         ),
-      );
+      ),
+    );
 
-      final padding = tester.widget<Padding>(
-        find.ancestor(
-          of: find.byType(Divider),
-          matching: find.byType(Padding),
-        ).first,
-      );
-      final divider = tester.widget<Divider>(find.byType(Divider));
+    final padding = tester.widget<Padding>(
+      find
+          .ancestor(of: find.byType(Divider), matching: find.byType(Padding))
+          .first,
+    );
+    final divider = tester.widget<Divider>(find.byType(Divider));
 
-      expect(padding.padding, const EdgeInsets.symmetric(vertical: 12));
-      expect(divider.indent, 8);
-      expect(divider.endIndent, 16);
-      expect(divider.color, AfkTheme.light().dividerColor);
-    },
-  );
+    expect(padding.padding, const EdgeInsets.symmetric(vertical: 12));
+    expect(divider.indent, 8);
+    expect(divider.endIndent, 16);
+    expect(divider.color, AfkTheme.light().dividerColor);
+  });
 
   group('AfkTextField', () {
     testWidgets('shows label, hint, and helper text', (tester) async {
@@ -270,43 +253,38 @@ void main() {
         ),
       );
 
-      final fields = tester.widgetList<TextFormField>(
-        find.byType(TextFormField),
-      ).toList();
+      final fields =
+          tester.widgetList<TextFormField>(find.byType(TextFormField)).toList();
       expect(fields[0].obscureText, isTrue);
       expect(fields[1].enabled, isFalse);
     });
   });
 
   group('AfkCheckboxTile', () {
-    testWidgets(
-      'renders title and subtitle and reports changes',
-      (tester) async {
-        bool? changedValue;
+    testWidgets('renders title and subtitle and reports changes', (
+      tester,
+    ) async {
+      bool? changedValue;
 
-        await tester.pumpWidget(
-          MaterialApp(
-            theme: AfkTheme.light(),
-            home: Scaffold(
-              body: AfkCheckboxTile(
-                title: 'Remember me',
-                subtitle: 'Keep this preference on this device.',
-                value: false,
-                onChanged: (value) => changedValue = value,
-              ),
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkCheckboxTile(
+              title: 'Remember me',
+              subtitle: 'Keep this preference on this device.',
+              value: false,
+              onChanged: (value) => changedValue = value,
             ),
           ),
-        );
+        ),
+      );
 
-        expect(find.text('Remember me'), findsOneWidget);
-        expect(
-          find.text('Keep this preference on this device.'),
-          findsOneWidget,
-        );
-        await tester.tap(find.byType(CheckboxListTile));
-        expect(changedValue, isTrue);
-      },
-    );
+      expect(find.text('Remember me'), findsOneWidget);
+      expect(find.text('Keep this preference on this device.'), findsOneWidget);
+      await tester.tap(find.byType(CheckboxListTile));
+      expect(changedValue, isTrue);
+    });
 
     testWidgets('does not respond when disabled', (tester) async {
       bool? changedValue;
@@ -400,10 +378,7 @@ void main() {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
-          body: AfkBadge(
-            label: 'Active',
-            icon: Icons.check_circle_outline,
-          ),
+          body: AfkBadge(label: 'Active', icon: Icons.check_circle_outline),
         ),
       ),
     );
@@ -437,9 +412,7 @@ void main() {
   testWidgets('AfkLoadingIndicator shows optional label', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
-        home: Scaffold(
-          body: AfkLoadingIndicator(label: 'Loading your data'),
-        ),
+        home: Scaffold(body: AfkLoadingIndicator(label: 'Loading your data')),
       ),
     );
 

@@ -27,18 +27,20 @@ class AfkIconButton extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AfkRadius.md),
-      side: variant == AfkIconButtonVariant.outlined
-          ? BorderSide(color: scheme.outline)
-          : BorderSide.none,
+      side:
+          variant == AfkIconButtonVariant.outlined
+              ? BorderSide(color: scheme.outline)
+              : BorderSide.none,
     );
     final background = switch (variant) {
       AfkIconButtonVariant.plain => Colors.transparent,
       AfkIconButtonVariant.filled => scheme.primary,
       AfkIconButtonVariant.outlined => Colors.transparent,
     };
-    final foreground = variant == AfkIconButtonVariant.filled
-        ? scheme.onPrimary
-        : scheme.onSurface;
+    final foreground =
+        variant == AfkIconButtonVariant.filled
+            ? scheme.onPrimary
+            : scheme.onSurface;
 
     return IconButton(
       tooltip: tooltip,

@@ -35,10 +35,7 @@ class AfkCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         customBorder: shape,
-        child: Padding(
-          padding: padding,
-          child: child,
-        ),
+        child: Padding(padding: padding, child: child),
       ),
     );
   }

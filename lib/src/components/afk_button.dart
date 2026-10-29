@@ -38,8 +38,7 @@ class AfkButton extends StatelessWidget {
           )
         else if (leading != null)
           leading!,
-        if (isLoading || leading != null)
-          const SizedBox(width: AfkSpacing.xs),
+        if (isLoading || leading != null) const SizedBox(width: AfkSpacing.xs),
         Flexible(child: Text(label, textAlign: TextAlign.center)),
       ],
     );

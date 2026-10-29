@@ -14,9 +14,8 @@ abstract final class AfkTheme {
 
   static ThemeData _build(Brightness brightness) {
     final isDark = brightness == Brightness.dark;
-    final background = isDark
-        ? AfkColors.darkBackground
-        : AfkColors.lightBackground;
+    final background =
+        isDark ? AfkColors.darkBackground : AfkColors.lightBackground;
     final surface = isDark ? AfkColors.darkSurface : AfkColors.lightSurface;
     final foreground = isDark ? AfkColors.white : AfkColors.black;
     final subtle = isDark ? AfkColors.gray500 : AfkColors.gray700;
@@ -66,10 +65,9 @@ abstract final class AfkTheme {
         ),
       ),
       dividerTheme: DividerThemeData(color: outline, thickness: 1, space: 1),
-      textTheme: ThemeData(brightness: brightness).textTheme.apply(
-        bodyColor: foreground,
-        displayColor: foreground,
-      ),
+      textTheme: ThemeData(
+        brightness: brightness,
+      ).textTheme.apply(bodyColor: foreground, displayColor: foreground),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: surface,

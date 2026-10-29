@@ -22,17 +22,18 @@ class AfkBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final background = variant == AfkBadgeVariant.subtle
-        ? scheme.onSurface.withValues(alpha: 0.06)
-        : variant == AfkBadgeVariant.filled
-        ? scheme.primary
-        : Colors.transparent;
-    final foreground = variant == AfkBadgeVariant.filled
-        ? scheme.onPrimary
-        : scheme.onSurface;
-    final border = variant == AfkBadgeVariant.outlined
-        ? Border.all(color: scheme.outline)
-        : null;
+    final background =
+        variant == AfkBadgeVariant.subtle
+            ? scheme.onSurface.withValues(alpha: 0.06)
+            : variant == AfkBadgeVariant.filled
+            ? scheme.primary
+            : Colors.transparent;
+    final foreground =
+        variant == AfkBadgeVariant.filled ? scheme.onPrimary : scheme.onSurface;
+    final border =
+        variant == AfkBadgeVariant.outlined
+            ? Border.all(color: scheme.outline)
+            : null;
 
     return Container(
       padding: const EdgeInsets.symmetric(
