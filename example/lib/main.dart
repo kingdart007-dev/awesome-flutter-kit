@@ -407,6 +407,33 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
               ),
             ),
             AfkButton(
+              label: 'Open bottom sheet',
+              variant: AfkButtonVariant.outlined,
+              onPressed: () => AfkBottomSheet.show<void>(
+                context,
+                builder: (sheetContext) => AfkBottomSheet.content(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Quick actions', style: theme.textTheme.titleLarge),
+                      const SizedBox(height: AfkSpacing.md),
+                      AfkListTile(
+                        title: const Text('Edit details'),
+                        leading: const Icon(Icons.edit_outlined),
+                        onTap: () => Navigator.of(sheetContext).pop(),
+                      ),
+                      AfkListTile(
+                        title: const Text('Manage preferences'),
+                        leading: const Icon(Icons.tune_outlined),
+                        onTap: () => Navigator.of(sheetContext).pop(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            AfkButton(
               label: 'Confirm action',
               variant: AfkButtonVariant.outlined,
               onPressed: () async {
