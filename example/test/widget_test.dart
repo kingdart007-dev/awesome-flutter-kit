@@ -50,7 +50,6 @@ void main() {
         scrollable: find.byType(Scrollable).first,
       );
       expect(find.text('Grilled chicken bowl'), findsOneWidget);
-      expect(find.text('Grilled chicken bowl'), findsOneWidget);
     },
   );
 
