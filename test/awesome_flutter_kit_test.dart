@@ -90,25 +90,27 @@ void main() {
     });
   });
 
-  testWidgets('AfkSectionHeader shows title, subtitle, and trailing content',
-      (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: AfkTheme.light(),
-        home: const Scaffold(
-          body: AfkSectionHeader(
-            title: 'Recent activity',
-            subtitle: 'Your latest entries',
-            trailing: Icon(Icons.more_horiz),
+  testWidgets(
+    'AfkSectionHeader shows title, subtitle, and trailing content',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: const Scaffold(
+            body: AfkSectionHeader(
+              title: 'Recent activity',
+              subtitle: 'Your latest entries',
+              trailing: Icon(Icons.more_horiz),
+            ),
           ),
         ),
-      ),
-    );
+      );
 
-    expect(find.text('Recent activity'), findsOneWidget);
-    expect(find.text('Your latest entries'), findsOneWidget);
-    expect(find.byIcon(Icons.more_horiz), findsOneWidget);
-  });
+      expect(find.text('Recent activity'), findsOneWidget);
+      expect(find.text('Your latest entries'), findsOneWidget);
+      expect(find.byIcon(Icons.more_horiz), findsOneWidget);
+    },
+  );
 
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
