@@ -159,7 +159,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
               Text('Your activity is moving in the right direction.',
                   style: theme.textTheme.bodyMedium),
               const SizedBox(height: AfkSpacing.lg),
-              const LinearProgressIndicator(value: 0.72, minHeight: 4),
+              const AfkProgressBar(value: 0.72, label: 'Weekly target', showValue: true),
               const SizedBox(height: AfkSpacing.sm),
               Text('72% of your weekly target',
                   style: theme.textTheme.labelMedium),
