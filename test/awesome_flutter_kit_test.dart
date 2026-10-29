@@ -515,7 +515,6 @@ void main() {
     });
   });
 
-
   group('AfkSegmentedControl', () {
     testWidgets('shows options and reports selection', (tester) async {
       String selected = 'day';
@@ -524,15 +523,16 @@ void main() {
           theme: AfkTheme.light(),
           home: Scaffold(
             body: StatefulBuilder(
-              builder: (context, setState) => AfkSegmentedControl<String>(
-                options: const [
-                  AfkSegmentedOption(value: 'day', label: 'Day'),
-                  AfkSegmentedOption(value: 'week', label: 'Week'),
-                  AfkSegmentedOption(value: 'month', label: 'Month'),
-                ],
-                value: selected,
-                onChanged: (value) => setState(() => selected = value),
-              ),
+              builder:
+                  (context, setState) => AfkSegmentedControl<String>(
+                    options: const [
+                      AfkSegmentedOption(value: 'day', label: 'Day'),
+                      AfkSegmentedOption(value: 'week', label: 'Week'),
+                      AfkSegmentedOption(value: 'month', label: 'Month'),
+                    ],
+                    value: selected,
+                    onChanged: (value) => setState(() => selected = value),
+                  ),
             ),
           ),
         ),
@@ -572,11 +572,12 @@ void main() {
           theme: AfkTheme.light(),
           home: Scaffold(
             body: StatefulBuilder(
-              builder: (context, setState) => AfkChoiceChip(
-                label: 'Design',
-                selected: selected,
-                onSelected: (value) => setState(() => selected = value),
-              ),
+              builder:
+                  (context, setState) => AfkChoiceChip(
+                    label: 'Design',
+                    selected: selected,
+                    onSelected: (value) => setState(() => selected = value),
+                  ),
             ),
           ),
         ),
