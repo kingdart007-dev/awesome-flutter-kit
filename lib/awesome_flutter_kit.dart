@@ -4,10 +4,15 @@
 /// compose screens from the small, reusable primitives exported here.
 library;
 
+export 'src/components/afk_badge.dart';
 export 'src/components/afk_button.dart';
+export 'src/components/afk_card.dart';
 export 'src/components/afk_checkbox_tile.dart';
 export 'src/components/afk_divider.dart';
 export 'src/components/afk_empty_state.dart';
+export 'src/components/afk_error_state.dart';
+export 'src/components/afk_icon_button.dart';
+export 'src/components/afk_loading_indicator.dart';
 export 'src/components/afk_page.dart';
 export 'src/components/afk_section_header.dart';
 export 'src/components/afk_switch_tile.dart';
