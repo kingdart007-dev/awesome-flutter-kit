@@ -137,6 +137,52 @@ void main() {
     },
   );
 
+  testWidgets('AfkPage can disable its safe area', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: AfkPage(
+            safeArea: false,
+            child: Text('Edge content'),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Edge content'), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byType(AfkPage),
+        matching: find.byType(SafeArea),
+      ),
+      findsNothing,
+    );
+  });
+
+  testWidgets('AfkPage accepts a custom maximum width', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: AfkPage(
+            maxWidth: 480,
+            padding: EdgeInsets.zero,
+            child: Text('Narrow content'),
+          ),
+        ),
+      ),
+    );
+
+    final constraints = tester.widget<ConstrainedBox>(
+      find.descendant(
+        of: find.byType(AfkPage),
+        matching: find.byType(ConstrainedBox),
+      ),
+    );
+
+    expect(constraints.constraints.maxWidth, 480);
+    expect(find.text('Narrow content'), findsOneWidget);
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
