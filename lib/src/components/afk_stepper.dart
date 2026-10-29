@@ -48,7 +48,7 @@ class AfkStepper extends StatelessWidget {
         IconButton(
           tooltip: decreaseTooltip,
           onPressed: canDecrease
-              ? () => onChanged!((value - step).clamp(min, max))
+              ? () => onChanged!((value - step).clamp(min, max).toInt())
               : null,
           constraints: const BoxConstraints(
             minWidth: 48,
@@ -81,7 +81,7 @@ class AfkStepper extends StatelessWidget {
         IconButton(
           tooltip: increaseTooltip,
           onPressed: canIncrease
-              ? () => onChanged!((value + step).clamp(min, max))
+              ? () => onChanged!((value + step).clamp(min, max).toInt())
               : null,
           constraints: const BoxConstraints(
             minWidth: 48,
