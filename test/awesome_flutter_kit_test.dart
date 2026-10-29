@@ -4,6 +4,76 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkStepper', () {
+    testWidgets('increments, decrements, and disables at bounds', (
+      tester,
+    ) async {
+      var value = 2;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: StatefulBuilder(
+            builder: (context, setState) => Scaffold(
+              body: AfkStepper(
+                label: 'Quantity',
+                value: value,
+                min: 1,
+                max: 3,
+                onChanged: (next) => setState(() => value = next),
+                decreaseTooltip: 'Decrease quantity',
+                increaseTooltip: 'Increase quantity',
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byTooltip('Increase quantity'));
+      await tester.pumpAndSettle();
+      expect(find.text('3'), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Increase quantity'));
+      await tester.pumpAndSettle();
+      expect(value, 3);
+
+      await tester.tap(find.byTooltip('Decrease quantity'));
+      await tester.pumpAndSettle();
+      expect(value, 2);
+    });
+
+    testWidgets('supports custom value labels and disabled state', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkStepper(
+              label: 'Items',
+              value: 1,
+              min: 1,
+              max: 5,
+              onChanged: null,
+              decreaseTooltip: 'Decrease',
+              increaseTooltip: 'Increase',
+              valueLabelBuilder: (value) => '$value item',
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('1 item'), findsOneWidget);
+      expect(
+        tester.widget<IconButton>(find.byTooltip('Decrease')).onPressed,
+        isNull,
+      );
+      expect(
+        tester.widget<IconButton>(find.byTooltip('Increase')).onPressed,
+        isNull,
+      );
+    });
+  });
+
+
   group('AfkTabBar', () {
     testWidgets('renders tabs and allows the controller to change views', (
       tester,
