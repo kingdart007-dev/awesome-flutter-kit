@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/afk_spacing.dart';
-
 /// A compact checkbox row with a consistent layout and accessible tap target.
 class AfkCheckboxTile extends StatelessWidget {
   const AfkCheckboxTile({
