@@ -774,6 +774,35 @@ void main() {
     });
   });
 
+
+  group('AfkSearchField', () {
+    testWidgets('reports input and clears the current query', (tester) async {
+      final controller = TextEditingController();
+      final changes = <String>[];
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkSearchField(
+              controller: controller,
+              hintText: 'Search items',
+              clearTooltip: 'Clear search',
+              onChanged: changes.add,
+            ),
+          ),
+        ),
+      );
+
+      await tester.enterText(find.byType(TextField), 'sample');
+      expect(changes.last, 'sample');
+      await tester.tap(find.byTooltip('Clear search'));
+      await tester.pumpAndSettle();
+      expect(controller.text, isEmpty);
+      expect(changes.last, isEmpty);
+      controller.dispose();
+    });
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
