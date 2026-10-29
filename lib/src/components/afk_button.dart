@@ -51,41 +51,41 @@ class AfkButton extends StatelessWidget {
 
     final Widget button = switch (variant) {
       AfkButtonVariant.filled => FilledButton(
-          onPressed: enabled ? onPressed : null,
-          style: FilledButton.styleFrom(
-            shape: shape,
-            minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AfkSpacing.lg,
-              vertical: AfkSpacing.md,
-            ),
+        onPressed: enabled ? onPressed : null,
+        style: FilledButton.styleFrom(
+          shape: shape,
+          minimumSize: const Size(48, 48),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AfkSpacing.lg,
+            vertical: AfkSpacing.md,
           ),
-          child: child,
         ),
+        child: child,
+      ),
       AfkButtonVariant.outlined => OutlinedButton(
-          onPressed: enabled ? onPressed : null,
-          style: OutlinedButton.styleFrom(
-            shape: shape,
-            minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AfkSpacing.lg,
-              vertical: AfkSpacing.md,
-            ),
+        onPressed: enabled ? onPressed : null,
+        style: OutlinedButton.styleFrom(
+          shape: shape,
+          minimumSize: const Size(48, 48),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AfkSpacing.lg,
+            vertical: AfkSpacing.md,
           ),
-          child: child,
         ),
+        child: child,
+      ),
       AfkButtonVariant.text => TextButton(
-          onPressed: enabled ? onPressed : null,
-          style: TextButton.styleFrom(
-            shape: shape,
-            minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(
-              horizontal: AfkSpacing.md,
-              vertical: AfkSpacing.md,
-            ),
+        onPressed: enabled ? onPressed : null,
+        style: TextButton.styleFrom(
+          shape: shape,
+          minimumSize: const Size(48, 48),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AfkSpacing.md,
+            vertical: AfkSpacing.md,
           ),
-          child: child,
         ),
+        child: child,
+      ),
     };
 
     return Semantics(
