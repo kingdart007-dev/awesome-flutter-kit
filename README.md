@@ -9,11 +9,12 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Monochrome design tokens for color, spacing, and corner radius
 - Light and dark theme factories
 - Reusable button with filled, outlined, text, disabled, and loading states
+- Minimal bordered card, compact badge, and accessible icon button variants
 - Theme-aware divider with configurable spacing and horizontal insets
 - Reusable text field with labels, hints, helper/error text, obscured input, and enabled states
 - Consistent checkbox and switch tiles for forms and settings, with disabled states
 - Responsive page layout with consistent padding, safe-area handling, and a readable content width
-- Section header and empty-state primitives
+- Section header, empty-state, loading, and recoverable error-state primitives
 - Widget tests and Dart analysis rules
 - GitHub Actions quality workflow
 
