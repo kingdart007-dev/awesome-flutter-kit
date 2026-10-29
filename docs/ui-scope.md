@@ -27,23 +27,31 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 - [x] Buttons, icon buttons, text fields
 - [x] Checkbox and switch tiles
 - [x] Cards, badges, dividers, section headers
-- [ ] Segmented controls, radio tiles, sliders, steppers
-- [ ] Search field, chips, selectable rows, toggles and choice groups
+- [x] Segmented controls, radio tiles, sliders
+- [ ] Steppers
+- [x] Selectable chips and choice groups
+- [ ] Search field, steppers and selectable rows
 - [ ] Date/time pickers and selection sheets
 - [ ] Password visibility, clear field, counter, prefix/suffix and input formatting patterns
 
 ### 3. Navigation and overlays
-- [ ] App bars, large/collapsing headers, back affordances
-- [ ] Bottom navigation, tab bars, navigation rail patterns for phone contexts where appropriate
-- [ ] Dialogs, confirmation dialogs, action sheets, bottom sheets
-- [ ] Toast/snackbar/banner notifications
+- [x] App bar with platform-default back affordance
+- [ ] Large/collapsing headers and custom back patterns
+- [x] Bottom navigation
+- [ ] Tab bars and navigation rail patterns for phone contexts where appropriate
+- [x] Confirmation dialogs
+- [ ] Action sheets and bottom sheets
+- [x] Snackbar notifications
+- [ ] Toast/banner notifications
 - [ ] Menus, popovers, tooltips, contextual actions
 - [ ] Route transitions, deep-link integration guidance, Android back and iOS swipe-back behavior
 
 ### 4. Content and feedback
 - [x] Empty state, loading indicator, recoverable error state
-- [ ] Skeletons/shimmer with reduced-motion fallback
-- [ ] Success, warning, info, and destructive feedback
+- [x] Static skeleton placeholders
+- [ ] Animated shimmer with reduced-motion fallback
+- [x] Success, warning, and info messages
+- [ ] Destructive inline feedback patterns
 - [ ] Pull-to-refresh, pagination, load-more, retry patterns
 - [ ] Progress bars, progress rings, step progress, status indicators
 - [ ] Avatar, image placeholder, media tile, list item, grouped list
@@ -68,7 +76,8 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 ### 7. Engineering and quality
 - [x] Public export entry point and widget tests for core primitives
 - [x] CI formatting, analysis, and test workflow
-- [ ] Screenshot/golden strategy and example gallery
+- [x] Interactive example gallery app
+- [ ] Screenshot/golden strategy
 - [ ] API stability and migration policy
 - [ ] Performance checks for animation-heavy widgets
 - [ ] Contribution checklist for accessibility, RTL, theming, tests, and motion
