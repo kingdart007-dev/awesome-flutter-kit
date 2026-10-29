@@ -63,11 +63,21 @@ void main() {
 
       expect(find.text('1 item'), findsOneWidget);
       expect(
-        tester.widget<IconButton>(find.byTooltip('Decrease')).onPressed,
+        tester.widget<IconButton>(
+          find.descendant(
+            of: find.byType(AfkStepper),
+            matching: find.byType(IconButton),
+          ).first,
+        ).onPressed,
         isNull,
       );
       expect(
-        tester.widget<IconButton>(find.byTooltip('Increase')).onPressed,
+        tester.widget<IconButton>(
+          find.descendant(
+            of: find.byType(AfkStepper),
+            matching: find.byType(IconButton),
+          ).last,
+        ).onPressed,
         isNull,
       );
     });
