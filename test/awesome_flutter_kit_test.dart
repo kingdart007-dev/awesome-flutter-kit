@@ -4,6 +4,49 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  testWidgets('nutrition components render in right-to-left layouts', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AfkTheme.light(),
+        home: const Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
+            body: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  AfkDateSelector(
+                    options: [
+                      AfkDateOption(value: 'today', label: 'اليوم', caption: '٢٢'),
+                      AfkDateOption(value: 'tomorrow', label: 'غدًا', caption: '٢٣'),
+                    ],
+                    value: 'today',
+                    onChanged: null,
+                  ),
+                  AfkFoodEstimateTile(
+                    title: 'دجاج مشوي',
+                    portionLabel: '١٥٠ جرام',
+                    calories: 280,
+                    calorieUnit: 'سعرة',
+                    editLabel: 'تعديل',
+                    onEdit: null,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('اليوم'), findsOneWidget);
+    expect(find.text('دجاج مشوي'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+
   group('AfkFastingCard', () {
     testWidgets('shows session status and invokes the host action', (
       tester,
