@@ -53,7 +53,7 @@ Use `AfkAppBar` for a consistent, low-elevation top bar and `AfkBottomNavigation
 
 ## Selection controls
 
-Use `AfkSegmentedControl` for two or more mutually exclusive, compact choices; `AfkChoiceChip` for optional filters or compact toggles; and `AfkSlider` for bounded numeric values. Keep selection controlled by the host app, localize labels there, and avoid segmented controls for long lists or complex content.
+Use `AfkStepper` for bounded integer adjustments with clear increment/decrement actions. The host app supplies localized tooltips and the displayed value format. Use `AfkSegmentedControl` for two or more mutually exclusive, compact choices; `AfkChoiceChip` for optional filters or compact toggles; and `AfkSlider` for bounded numeric values. Keep selection controlled by the host app, localize labels there, and avoid segmented controls for long lists or complex content.
 
 ## Dialogs and transient feedback
 
