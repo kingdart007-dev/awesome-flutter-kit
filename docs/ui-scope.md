@@ -39,9 +39,9 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 - [x] App bar with platform-default back affordance
 - [ ] Large/collapsing headers and custom back patterns
 - [x] Bottom navigation
-- [ ] Tab bars and navigation rail patterns for phone contexts where appropriate
+- [x] Tab bar for related views; [ ] navigation rail patterns for phone contexts where appropriate
 - [x] Confirmation dialogs
-- [ ] Action sheets and bottom sheets
+- [x] Bottom sheets; [ ] action-sheet presets
 - [x] Snackbar notifications
 - [ ] Toast/banner notifications
 - [ ] Menus, popovers, tooltips, contextual actions
@@ -62,7 +62,7 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 ### 5. Motion and tactile feedback
 - [x] Shared duration and easing tokens
 - [x] Press feedback that respects reduced-motion preferences
-- [ ] Shared page, modal, and content transitions
+- [x] Shared content replacement fade with reduced-motion fallback; [ ] shared page and modal transitions
 - [ ] Animated selection, expand/collapse, reorder, and list insert/remove
 - [ ] Haptic conventions by action importance
 - [ ] Sound effects as explicit opt-in host-app behavior; never play surprise sounds by default
