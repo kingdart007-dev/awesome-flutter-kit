@@ -662,6 +662,51 @@ void main() {
     });
   });
 
+
+  group('AfkAppBar', () {
+    testWidgets('renders a title with the theme surface', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: const Scaffold(
+            appBar: AfkAppBar(title: Text('Overview')),
+            body: SizedBox.shrink(),
+          ),
+        ),
+      );
+      expect(find.text('Overview'), findsOneWidget);
+      expect(find.byType(AfkAppBar), findsOneWidget);
+    });
+  });
+
+  group('AfkBottomNavigationBar', () {
+    testWidgets('reports selected destination changes', (tester) async {
+      var selected = 0;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            bottomNavigationBar: StatefulBuilder(
+              builder: (context, setState) => AfkBottomNavigationBar(
+                selectedIndex: selected,
+                onDestinationSelected: (index) =>
+                    setState(() => selected = index),
+                items: const [
+                  AfkNavigationItem(label: 'Home', icon: Icons.home_outlined),
+                  AfkNavigationItem(label: 'Search', icon: Icons.search),
+                  AfkNavigationItem(label: 'Profile', icon: Icons.person_outline),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.byIcon(Icons.search));
+      await tester.pumpAndSettle();
+      expect(selected, 1);
+    });
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
