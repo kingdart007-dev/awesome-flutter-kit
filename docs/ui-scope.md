@@ -56,7 +56,7 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 - [ ] Pull-to-refresh, pagination, load-more, retry patterns
 - [x] Linear progress bar with determinate/indeterminate semantics
 - [x] Calorie-budget ring and macro progress; [ ] generic step progress and richer status indicators
-- [x] Nutrition meal diary row and generic list item; [ ] avatar, image placeholder, media tile, grouped list
+- [x] Nutrition meal diary row and editable food-estimate row; [ ] avatar, image placeholder, media tile, grouped list
 - [ ] Offline, permission denied, no results, and stale-data states
 
 ### 5. Motion and tactile feedback
