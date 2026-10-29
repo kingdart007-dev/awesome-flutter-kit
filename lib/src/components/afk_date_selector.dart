@@ -27,7 +27,7 @@ class AfkDateSelector extends StatelessWidget {
     required this.onChanged,
     this.scrollable = true,
     super.key,
-  }) : assert(options.length > 0);
+  });
 
   final List<AfkDateOption> options;
   final String value;
