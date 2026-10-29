@@ -3,6 +3,78 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+
+  group('AfkListTile', () {
+    testWidgets('shows title and subtitle and responds to taps', (
+      tester,
+    ) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkListTile(
+              title: const Text('Profile'),
+              subtitle: const Text('Account preferences'),
+              leading: const Icon(Icons.person_outline),
+              onTap: () => tapped = true,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Profile'), findsOneWidget);
+      expect(find.text('Account preferences'), findsOneWidget);
+      await tester.tap(find.byType(AfkListTile));
+      expect(tapped, isTrue);
+    });
+  });
+
+  group('AfkBottomSheet', () {
+    testWidgets('presents content and returns a selected result', (
+      tester,
+    ) async {
+      String? result;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: TextButton(
+                onPressed: () async {
+                  result = await AfkBottomSheet.show<String>(
+                    context,
+                    builder: (sheetContext) => AfkBottomSheet.content(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text('Choose an option'),
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.of(sheetContext).pop('selected'),
+                            child: const Text('Select'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                child: const Text('Open sheet'),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Open sheet'));
+      await tester.pumpAndSettle();
+      expect(find.text('Choose an option'), findsOneWidget);
+      await tester.tap(find.text('Select'));
+      await tester.pumpAndSettle();
+      expect(result, 'selected');
+    });
+  });
+
   group('AfkTheme', () {
     test('creates light and dark themes', () {
       expect(AfkTheme.light().brightness, Brightness.light);
