@@ -97,6 +97,10 @@ Use `AfkCheckboxTile` for independent on/off choices and `AfkSwitchTile` for set
 Before adding a shared widget, verify that it represents a repeated pattern. Give it a narrow API, predictable defaults, both-theme support, disabled/loading/error states where relevant, and tests for meaningful behavior.
 
 
+## Disclosure and progressive detail
+
+Use `AfkExpandableSection` to keep secondary settings or nutrients available without giving them the same visual priority as the main task. Supply localized expand/collapse tooltips when useful; it exposes expanded semantics, reports state changes, and respects reduced-motion preferences.
+
 ## Nutrition dashboard patterns
 
 The optional nutrition-oriented primitives are useful for photo-first trackers and similar health products:
