@@ -63,7 +63,7 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 - [x] Shared duration and easing tokens
 - [x] Press feedback that respects reduced-motion preferences
 - [x] Shared content replacement fade with reduced-motion fallback; [ ] shared page and modal transitions
-- [ ] Animated selection, expand/collapse, reorder, and list insert/remove
+- [x] Accessible expand/collapse section with reduced-motion support; [ ] animated selection, reorder, and list insert/remove
 - [ ] Haptic conventions by action importance
 - [ ] Sound effects as explicit opt-in host-app behavior; never play surprise sounds by default
 
