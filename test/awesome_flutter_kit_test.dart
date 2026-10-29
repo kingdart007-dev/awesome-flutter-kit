@@ -449,6 +449,66 @@ void main() {
     expect(retried, isTrue);
   });
 
+  group('AfkMotion', () {
+    test('provides shared short and standard motion timings', () {
+      expect(AfkMotion.fast.inMilliseconds, lessThan(AfkMotion.normal.inMilliseconds));
+      expect(
+        AfkMotion.normal.inMilliseconds,
+        lessThan(AfkMotion.deliberate.inMilliseconds),
+      );
+    });
+  });
+
+  group('AfkPressable', () {
+    testWidgets('renders its child and responds to taps', (tester) async {
+      var tapped = false;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkPressable(
+              onTap: () => tapped = true,
+              child: const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('Tap me'),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Tap me'), findsOneWidget);
+      await tester.tap(find.byType(AfkPressable));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('disables animated scaling when reduced motion is enabled', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => MediaQuery(
+              data: MediaQuery.of(context).copyWith(disableAnimations: true),
+              child: const Scaffold(
+                body: AfkPressable(
+                  onTap: _noop,
+                  child: Text('Reduced motion'),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      final animatedScale = tester.widget<AnimatedScale>(
+        find.byType(AnimatedScale),
+      );
+      expect(animatedScale.duration, Duration.zero);
+    });
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
