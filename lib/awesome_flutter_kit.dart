@@ -6,6 +6,7 @@ library;
 
 export 'src/components/afk_button.dart';
 export 'src/components/afk_empty_state.dart';
+export 'src/components/afk_page.dart';
 export 'src/components/afk_section_header.dart';
 export 'src/theme/afk_colors.dart';
 export 'src/theme/afk_radius.dart';
