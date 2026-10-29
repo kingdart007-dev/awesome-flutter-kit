@@ -4,6 +4,36 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkDateSelector', () {
+    testWidgets('shows date options and reports selection', (tester) async {
+      String selected = 'today';
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: StatefulBuilder(
+            builder: (context, setState) => Scaffold(
+              body: AfkDateSelector(
+                options: const [
+                  AfkDateOption(value: 'mon', label: 'Mon', caption: '21'),
+                  AfkDateOption(value: 'today', label: 'Today', caption: '22'),
+                  AfkDateOption(value: 'wed', label: 'Wed', caption: '23'),
+                ],
+                value: selected,
+                onChanged: (value) => setState(() => selected = value),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Today'), findsOneWidget);
+      await tester.tap(find.text('Wed'));
+      await tester.pumpAndSettle();
+      expect(selected, 'wed');
+    });
+  });
+
+
   group('AfkFoodScanCard', () {
     testWidgets('presents the scan action and handles taps', (tester) async {
       var tapped = false;
