@@ -30,7 +30,8 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 - [x] Segmented controls, radio tiles, sliders
 - [ ] Steppers
 - [x] Selectable chips and choice groups
-- [ ] Search field, steppers and selectable rows
+- [x] Search field
+- [ ] Steppers and selectable rows
 - [ ] Date/time pickers and selection sheets
 - [ ] Password visibility, clear field, counter, prefix/suffix and input formatting patterns
 
