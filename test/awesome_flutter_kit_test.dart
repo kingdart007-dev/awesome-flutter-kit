@@ -207,6 +207,74 @@ void main() {
     expect(divider.color, AfkTheme.light().dividerColor);
   });
 
+  group('AfkTextField', () {
+    testWidgets('shows label, hint, and helper text', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: const Scaffold(
+            body: Padding(
+              padding: EdgeInsets.all(16),
+              child: AfkTextField(
+                label: 'Email',
+                hintText: 'you@example.com',
+                helperText: 'We will never share your email.',
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Email'), findsOneWidget);
+      expect(find.text('you@example.com'), findsOneWidget);
+      expect(find.text('We will never share your email.'), findsOneWidget);
+    });
+
+    testWidgets('reports text changes and displays validation errors', (
+      tester,
+    ) async {
+      String? changedValue;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkTextField(
+              label: 'Name',
+              errorText: 'Name is required',
+              onChanged: (value) => changedValue = value,
+            ),
+          ),
+        ),
+      );
+
+      await tester.enterText(find.byType(TextFormField), 'Ada');
+      expect(changedValue, 'Ada');
+      expect(find.text('Name is required'), findsOneWidget);
+    });
+
+    testWidgets('supports obscured input and disabled state', (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: Column(
+              children: [
+                AfkTextField(label: 'Password', obscureText: true),
+                AfkTextField(label: 'Read only', enabled: false),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      final fields = tester.widgetList<TextFormField>(
+        find.byType(TextFormField),
+      ).toList();
+      expect(fields[0].obscureText, isTrue);
+      expect(fields[1].enabled, isFalse);
+    });
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
