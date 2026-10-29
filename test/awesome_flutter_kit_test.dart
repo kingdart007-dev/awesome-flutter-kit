@@ -374,6 +374,101 @@ void main() {
     });
   });
 
+  group('AfkCard', () {
+    testWidgets('renders content and responds to taps', (tester) async {
+      var tapped = false;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkCard(
+              onTap: () => tapped = true,
+              child: const Text('Card content'),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Card content'), findsOneWidget);
+      await tester.tap(find.byType(AfkCard));
+      expect(tapped, isTrue);
+    });
+  });
+
+  testWidgets('AfkBadge renders its label and optional icon', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: AfkBadge(
+            label: 'Active',
+            icon: Icons.check_circle_outline,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Active'), findsOneWidget);
+    expect(find.byIcon(Icons.check_circle_outline), findsOneWidget);
+  });
+
+  testWidgets('AfkIconButton exposes a tooltip and responds to taps', (
+    tester,
+  ) async {
+    var tapped = false;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: AfkIconButton(
+            icon: Icons.close,
+            tooltip: 'Close',
+            onPressed: () => tapped = true,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byTooltip('Close'), findsOneWidget);
+    await tester.tap(find.byType(AfkIconButton));
+    expect(tapped, isTrue);
+  });
+
+  testWidgets('AfkLoadingIndicator shows optional label', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: AfkLoadingIndicator(label: 'Loading your data'),
+        ),
+      ),
+    );
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    expect(find.text('Loading your data'), findsOneWidget);
+  });
+
+  testWidgets('AfkErrorState offers a working retry action', (tester) async {
+    var retried = false;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: AfkErrorState(
+            title: 'Could not load',
+            description: 'Check your connection and try again.',
+            retryLabel: 'Retry',
+            onRetry: () => retried = true,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Could not load'), findsOneWidget);
+    expect(find.text('Check your connection and try again.'), findsOneWidget);
+    await tester.tap(find.text('Retry'));
+    expect(retried, isTrue);
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
