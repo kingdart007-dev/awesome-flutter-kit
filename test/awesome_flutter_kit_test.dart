@@ -183,7 +183,9 @@ void main() {
     expect(find.text('Narrow content'), findsOneWidget);
   });
 
-  testWidgets('AfkDivider uses theme color and configurable spacing', (tester) async {
+  testWidgets(
+    'AfkDivider uses theme color and configurable spacing',
+    (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         theme: AfkTheme.light(),
@@ -272,6 +274,96 @@ void main() {
       ).toList();
       expect(fields[0].obscureText, isTrue);
       expect(fields[1].enabled, isFalse);
+    });
+  });
+
+  group('AfkCheckboxTile', () {
+    testWidgets('renders title and subtitle and reports changes', (tester) async {
+      bool? changedValue;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkCheckboxTile(
+              title: 'Remember me',
+              subtitle: 'Keep this preference on this device.',
+              value: false,
+              onChanged: (value) => changedValue = value,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Remember me'), findsOneWidget);
+      expect(find.text('Keep this preference on this device.'), findsOneWidget);
+      await tester.tap(find.byType(CheckboxListTile));
+      expect(changedValue, isTrue);
+    });
+
+    testWidgets('does not respond when disabled', (tester) async {
+      bool? changedValue;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkCheckboxTile(
+              title: 'Disabled',
+              value: false,
+              enabled: false,
+              onChanged: (value) => changedValue = value,
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byType(CheckboxListTile));
+      expect(changedValue, isNull);
+    });
+  });
+
+  group('AfkSwitchTile', () {
+    testWidgets('renders settings copy and reports changes', (tester) async {
+      bool? changedValue;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkSwitchTile(
+              title: 'Notifications',
+              subtitle: 'Receive important updates.',
+              value: false,
+              onChanged: (value) => changedValue = value,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Notifications'), findsOneWidget);
+      expect(find.text('Receive important updates.'), findsOneWidget);
+      await tester.tap(find.byType(Switch));
+      expect(changedValue, isTrue);
+    });
+
+    testWidgets('does not respond when disabled', (tester) async {
+      bool? changedValue;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkSwitchTile(
+              title: 'Disabled',
+              value: false,
+              enabled: false,
+              onChanged: (value) => changedValue = value,
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byType(Switch));
+      expect(changedValue, isNull);
     });
   });
 
