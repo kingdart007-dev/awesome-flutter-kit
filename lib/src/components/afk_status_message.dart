@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../theme/afk_colors.dart';
 import '../theme/afk_radius.dart';
 import '../theme/afk_spacing.dart';
 
@@ -25,9 +26,12 @@ class AfkStatusMessage extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
     final (foreground, background, defaultIcon) = switch (variant) {
       AfkStatusVariant.success => (
-        isDark ? const Color(0xFF9ADCB3) : const Color(0xFF216E45),
-        (isDark ? const Color(0xFF9ADCB3) : const Color(0xFF216E45))
-            .withValues(alpha: 0.10),
+        isDark
+            ? AfkColors.successForegroundDark
+            : AfkColors.successForegroundLight,
+        isDark
+            ? AfkColors.successContainerDark
+            : AfkColors.successContainerLight,
         Icons.check_circle_outline,
       ),
       AfkStatusVariant.info => (
@@ -36,9 +40,12 @@ class AfkStatusMessage extends StatelessWidget {
         Icons.info_outline,
       ),
       AfkStatusVariant.warning => (
-        isDark ? const Color(0xFFFFD08A) : const Color(0xFF805000),
-        (isDark ? const Color(0xFFFFD08A) : const Color(0xFF805000))
-            .withValues(alpha: 0.10),
+        isDark
+            ? AfkColors.warningForegroundDark
+            : AfkColors.warningForegroundLight,
+        isDark
+            ? AfkColors.warningContainerDark
+            : AfkColors.warningContainerLight,
         Icons.warning_amber_rounded,
       ),
     };
