@@ -54,7 +54,8 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 - [x] Success, warning, and info messages
 - [ ] Destructive inline feedback patterns
 - [ ] Pull-to-refresh, pagination, load-more, retry patterns
-- [ ] Progress bars, progress rings, step progress, status indicators
+- [x] Linear progress bar with determinate/indeterminate semantics
+- [ ] Progress rings, step progress, richer status indicators
 - [ ] Avatar, image placeholder, media tile, list item, grouped list
 - [ ] Offline, permission denied, no results, and stale-data states
 
