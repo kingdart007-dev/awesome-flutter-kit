@@ -4,6 +4,60 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkTabBar', () {
+    testWidgets('renders tabs and allows the controller to change views', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(bottom: const AfkTabBar(
+                tabs: [Tab(text: 'Overview'), Tab(text: 'Details')],
+              )),
+              body: const TabBarView(
+                children: [Text('Overview content'), Text('Details content')],
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Overview'), findsOneWidget);
+      await tester.tap(find.text('Details'));
+      await tester.pumpAndSettle();
+      expect(find.text('Details content'), findsOneWidget);
+    });
+  });
+
+  group('AfkContentSwitcher', () {
+    testWidgets('shows replacement content and respects reduced motion', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(disableAnimations: true),
+            child: const Scaffold(
+              body: AfkContentSwitcher(
+                child: Text('Current content', key: ValueKey('current')),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Current content'), findsOneWidget);
+      final switcher = tester.widget<AnimatedSwitcher>(
+        find.byType(AnimatedSwitcher),
+      );
+      expect(switcher.duration, Duration.zero);
+    });
+  });
+
+
   group('AfkListTile', () {
     testWidgets('shows title and subtitle and responds to taps', (
       tester,
