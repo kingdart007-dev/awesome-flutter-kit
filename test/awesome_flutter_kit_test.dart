@@ -4,6 +4,55 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkFastingCard', () {
+    testWidgets('shows session status and invokes the host action', (
+      tester,
+    ) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkFastingCard(
+              title: 'Fasting',
+              statusLabel: 'Session active',
+              durationLabel: '12 h 20 min',
+              actionLabel: 'End',
+              isActive: true,
+              onAction: () => tapped = true,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Session active'), findsOneWidget);
+      expect(find.text('12 h 20 min'), findsOneWidget);
+      await tester.tap(find.text('End'));
+      expect(tapped, isTrue);
+    });
+  });
+
+  group('AfkActivityEntryTile', () {
+    testWidgets('shows workout duration and calories burned', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: const Scaffold(
+            body: AfkActivityEntryTile(
+              title: 'Evening walk',
+              durationLabel: '32 min',
+              burnedCalories: 180,
+              calorieUnit: 'kcal',
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Evening walk'), findsOneWidget);
+      expect(find.text('32 min'), findsOneWidget);
+      expect(find.text('180'), findsOneWidget);
+    });
+  });
+
+
   group('AfkFoodEstimateTile', () {
     testWidgets('shows portion estimate and allows editing', (tester) async {
       var edited = false;
