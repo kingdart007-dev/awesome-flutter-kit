@@ -19,6 +19,7 @@ export 'src/components/afk_icon_button.dart';
 export 'src/components/afk_loading_indicator.dart';
 export 'src/components/afk_page.dart';
 export 'src/components/afk_pressable.dart';
+export 'src/components/afk_progress_bar.dart';
 export 'src/components/afk_radio_tile.dart';
 export 'src/components/afk_search_field.dart';
 export 'src/components/afk_section_header.dart';
