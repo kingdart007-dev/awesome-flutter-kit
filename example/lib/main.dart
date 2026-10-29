@@ -538,10 +538,10 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                     subtitle: const Text('Connect your host app’s camera flow'),
                     leading: const Icon(Icons.camera_alt_outlined),
                     onTap: () {
-                      Navigator.of(sheetContext).pop();
-                      AfkSnackBar.show(
+                      _showIntegrationNotice(
                         context,
-                        message: 'Showcase only — camera integration is host-owned.',
+                        sheetContext,
+                        'camera capture',
                       );
                     },
                   ),
@@ -550,10 +550,10 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                     subtitle: const Text('Connect your chosen food database'),
                     leading: const Icon(Icons.search),
                     onTap: () {
-                      Navigator.of(sheetContext).pop();
-                      AfkSnackBar.show(
+                      _showIntegrationNotice(
                         context,
-                        message: 'Showcase only — food search is host-owned.',
+                        sheetContext,
+                        'food search',
                       );
                     },
                   ),
@@ -562,12 +562,52 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                     subtitle: const Text('Connect a barcode scanner and data source'),
                     leading: const Icon(Icons.qr_code_scanner),
                     onTap: () {
-                      Navigator.of(sheetContext).pop();
-                      AfkSnackBar.show(
+                      _showIntegrationNotice(
                         context,
-                        message: 'Showcase only — barcode integration is host-owned.',
+                        sheetContext,
+                        'barcode scanning',
                       );
                     },
+                  ),
+                  AfkListTile(
+                    title: const Text('Choose from gallery'),
+                    subtitle: const Text('Select an existing meal photo'),
+                    leading: const Icon(Icons.photo_library_outlined),
+                    onTap: () => _showIntegrationNotice(
+                      context,
+                      sheetContext,
+                      'gallery selection',
+                    ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Describe by voice'),
+                    subtitle: const Text('Connect speech input and parsing'),
+                    leading: const Icon(Icons.mic_none),
+                    onTap: () => _showIntegrationNotice(
+                      context,
+                      sheetContext,
+                      'voice logging',
+                    ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Manual entry'),
+                    subtitle: const Text('Enter food and portion details'),
+                    leading: const Icon(Icons.edit_note),
+                    onTap: () => _showIntegrationNotice(
+                      context,
+                      sheetContext,
+                      'manual entry',
+                    ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Nutrition label'),
+                    subtitle: const Text('Read packaged-food nutrition facts'),
+                    leading: const Icon(Icons.document_scanner),
+                    onTap: () => _showIntegrationNotice(
+                      context,
+                      sheetContext,
+                      'nutrition-label scanning',
+                    ),
                   ),
                 ],
               ),
@@ -575,6 +615,19 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           ),
         ),
       ],
+    );
+  }
+
+
+  void _showIntegrationNotice(
+    BuildContext context,
+    BuildContext sheetContext,
+    String method,
+  ) {
+    Navigator.of(sheetContext).pop();
+    AfkSnackBar.show(
+      context,
+      message: 'Showcase only — $method belongs to the host app.',
     );
   }
 
