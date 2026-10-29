@@ -9,6 +9,7 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Monochrome design tokens for color, spacing, and corner radius
 - Light and dark theme factories
 - Reusable button with filled, outlined, text, disabled, and loading states
+- Theme-aware divider with configurable spacing and horizontal insets
 - Responsive page layout with consistent padding, safe-area handling, and a readable content width
 - Section header and empty-state primitives
 - Widget tests and Dart analysis rules
