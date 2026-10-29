@@ -101,7 +101,7 @@ Before adding a shared widget, verify that it represents a repeated pattern. Giv
 
 The optional nutrition-oriented primitives are useful for photo-first trackers and similar health products:
 
-- `AfkCalorieRing` summarizes intake against a daily budget. It accepts estimated values from the host app and exposes a semantic value.
+- `AfkDateSelector` provides a controlled horizontal date strip; the host app supplies localized dates and calendar semantics.\n- `AfkCalorieRing` summarizes intake against a daily budget. It accepts estimated values from the host app and exposes a semantic value.
 - `AfkMacroProgress` compares a nutrient value with its target using a restrained progress track.
 - `AfkMealEntryTile` gives meal history a consistent title, detail line, and calorie summary.
 - `AfkFoodScanCard` provides a prominent entry point for a host-owned camera/AI flow. It does not request camera access or pretend to analyze food.
