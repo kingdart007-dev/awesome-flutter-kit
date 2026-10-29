@@ -183,6 +183,30 @@ void main() {
     expect(find.text('Narrow content'), findsOneWidget);
   });
 
+  testWidgets('AfkDivider uses theme color and configurable spacing', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AfkTheme.light(),
+        home: const Scaffold(
+          body: AfkDivider(spacing: 12, indent: 8, endIndent: 16),
+        ),
+      ),
+    );
+
+    final padding = tester.widget<Padding>(
+      find.ancestor(
+        of: find.byType(Divider),
+        matching: find.byType(Padding),
+      ).first,
+    );
+    final divider = tester.widget<Divider>(find.byType(Divider));
+
+    expect(padding.padding, const EdgeInsets.symmetric(vertical: 12));
+    expect(divider.indent, 8);
+    expect(divider.endIndent, 16);
+    expect(divider.color, AfkTheme.light().dividerColor);
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
