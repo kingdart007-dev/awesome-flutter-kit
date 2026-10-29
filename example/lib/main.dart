@@ -457,13 +457,35 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                 subtitle: 'Lunch · rice, chicken, vegetables',
                 calories: 640,
                 calorieUnit: 'kcal',
-                leading: const Icon(Icons.rice_bowl_outlined),
+                leading: const Icon(Icons.fastfood_outlined),
                 onTap: () => AfkSnackBar.show(
                   context,
                   message: 'Demo entry selected. Your app owns meal details.',
                 ),
               ),
             ],
+          ),
+        ),
+
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(
+          title: 'Review an estimate',
+          subtitle: 'Keep recognition results editable before saving.',
+        ),
+        const SizedBox(height: AfkSpacing.sm),
+        AfkCard(
+          child: AfkFoodEstimateTile(
+            title: 'Grilled chicken',
+            subtitle: 'Illustrative estimate · review before saving',
+            portionLabel: '150 g',
+            calories: 280,
+            calorieUnit: 'kcal',
+            editLabel: 'Edit',
+            leading: const Icon(Icons.fastfood_outlined),
+            onEdit: () => AfkSnackBar.show(
+              context,
+              message: 'Demo only — portion editing belongs to the host flow.',
+            ),
           ),
         ),
         const SizedBox(height: AfkSpacing.lg),
