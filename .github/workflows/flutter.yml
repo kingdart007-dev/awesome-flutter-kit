@@ -33,3 +33,6 @@ jobs:
       - name: Analyze example app
         working-directory: example
         run: flutter analyze
+      - name: Test example app
+        working-directory: example
+        run: flutter test
