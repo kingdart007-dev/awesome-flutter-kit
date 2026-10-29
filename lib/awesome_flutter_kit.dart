@@ -20,6 +20,7 @@ export 'src/components/afk_date_selector.dart';
 export 'src/components/afk_divider.dart';
 export 'src/components/afk_empty_state.dart';
 export 'src/components/afk_error_state.dart';
+export 'src/components/afk_expandable_section.dart';
 export 'src/components/afk_fasting_card.dart';
 export 'src/components/afk_food_estimate_tile.dart';
 export 'src/components/afk_food_scan_card.dart';
