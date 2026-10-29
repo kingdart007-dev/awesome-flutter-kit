@@ -43,6 +43,10 @@ Use `AfkColors` for neutral palette values. Components should normally use `Them
 
 Use `AfkTextField` for consistent labels, hints, helper/error messages, focus borders, and disabled states. Pass localized copy from the host app. Prefer semantic keyboard types and text input actions, and avoid fixed-height wrappers so validation messages and text scaling can expand naturally.
 
+## Surfaces and status
+
+Use `AfkCard` to group related content only when grouping improves scanning; it defaults to a quiet border and no elevation, and supports an optional tap action. Use `AfkBadge` for short status or metadata labels, not long messages. `AfkIconButton` requires a tooltip and preserves a 48 logical-pixel touch target. Use `AfkLoadingIndicator` for pending work and `AfkErrorState` when the user needs a clear explanation or a retry action. Error and loading copy stays supplied by the host app so localization remains in one place.
+
 ## Selection controls
 
 Use `AfkCheckboxTile` for independent on/off choices and `AfkSwitchTile` for settings that take effect immediately. Both support an optional subtitle, standard full-row interaction, and a disabled state. Keep labels concise, pass localized strings from the host app, and use the callback to update state in the host application rather than introducing hidden state into the component.
