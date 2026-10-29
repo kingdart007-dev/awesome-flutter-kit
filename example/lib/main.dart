@@ -441,7 +441,10 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
         Row(
           children: [
             Expanded(
-              child: Text(\n                _selectedDay == 'today' ? 'Today’s meals' : 'Meals · $_selectedDay',\n                style: theme.textTheme.titleLarge,\n              ),
+              child: Text(
+                _selectedDay == 'today' ? 'Today’s meals' : 'Meals · $_selectedDay',
+                style: theme.textTheme.titleLarge,
+              ),
             ),
             Text('2 entries', style: theme.textTheme.labelMedium),
           ],
