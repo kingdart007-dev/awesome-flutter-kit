@@ -53,6 +53,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
   int _quantity = 2;
   int _waterMl = 1250;
   String _selectedDay = 'today';
+  bool _fastingActive = true;
   final Set<String> _filters = {'All'};
   final TextEditingController _searchController = TextEditingController();
 
@@ -413,6 +414,16 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           goal: 70,
           unit: 'g',
         ),
+
+        const SizedBox(height: AfkSpacing.lg),
+        AfkFastingCard(
+          title: 'Fasting window',
+          statusLabel: _fastingActive ? 'Session in progress' : 'Session paused',
+          durationLabel: '12 h 20 min',
+          actionLabel: _fastingActive ? 'End' : 'Start',
+          isActive: _fastingActive,
+          onAction: () => setState(() => _fastingActive = !_fastingActive),
+        ),
         const SizedBox(height: AfkSpacing.lg),
         AfkCard(
           child: AfkHydrationTracker(
@@ -467,6 +478,23 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           ),
         ),
 
+
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(
+          title: 'Movement',
+          subtitle: 'Activity entries can sit beside food and hydration.',
+        ),
+        const SizedBox(height: AfkSpacing.sm),
+        const AfkCard(
+          padding: EdgeInsets.symmetric(vertical: AfkSpacing.xs),
+          child: AfkActivityEntryTile(
+            title: 'Evening walk',
+            durationLabel: '32 min',
+            burnedCalories: 180,
+            calorieUnit: 'kcal',
+            subtitle: 'Walking',
+          ),
+        ),
         const SizedBox(height: AfkSpacing.xl),
         const AfkSectionHeader(
           title: 'Review an estimate',
