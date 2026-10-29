@@ -4,6 +4,75 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkCalorieRing', () {
+    testWidgets('shows calorie total and remaining budget', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: const Scaffold(
+            body: AfkCalorieRing(
+              consumed: 1200,
+              goal: 2000,
+              centerLabel: 'consumed',
+              footerLabel: 'kcal left',
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('1200'), findsOneWidget);
+      expect(find.text('800 kcal left'), findsOneWidget);
+      expect(find.byType(CircularProgressIndicator), findsNWidgets(2));
+    });
+  });
+
+  group('AfkMacroProgress', () {
+    testWidgets('exposes nutrient progress and values', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: const Scaffold(
+            body: AfkMacroProgress(
+              label: 'Protein',
+              value: 60,
+              goal: 120,
+              unit: 'g',
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Protein'), findsOneWidget);
+      expect(find.text('60 / 120 g'), findsOneWidget);
+      expect(tester.widget<LinearProgressIndicator>(
+        find.byType(LinearProgressIndicator),
+      ).value, 0.5);
+    });
+  });
+
+  group('AfkMealEntryTile', () {
+    testWidgets('shows meal details and reports selection', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkMealEntryTile(
+              title: 'Grilled chicken bowl',
+              subtitle: 'Lunch · 48 g protein',
+              calories: 520,
+              onTap: () => tapped = true,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Grilled chicken bowl'), findsOneWidget);
+      expect(find.text('520'), findsOneWidget);
+      await tester.tap(find.byType(AfkMealEntryTile));
+      expect(tapped, isTrue);
+    });
+  });
+
+
   group('AfkStepper', () {
     testWidgets('increments, decrements, and disables at bounds', (
       tester,
