@@ -4,6 +4,34 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkFoodEstimateTile', () {
+    testWidgets('shows portion estimate and allows editing', (tester) async {
+      var edited = false;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkFoodEstimateTile(
+              title: 'Grilled chicken',
+              portionLabel: '150 g estimated portion',
+              calories: 280,
+              calorieUnit: 'kcal',
+              editLabel: 'Edit',
+              onEdit: () => edited = true,
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Grilled chicken'), findsOneWidget);
+      expect(find.text('150 g estimated portion'), findsOneWidget);
+      expect(find.text('280'), findsOneWidget);
+      await tester.tap(find.text('Edit'));
+      expect(edited, isTrue);
+    });
+  });
+
+
   group('AfkDateSelector', () {
     testWidgets('shows date options and reports selection', (tester) async {
       String selected = 'today';
