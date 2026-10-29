@@ -39,6 +39,10 @@ The kit uses a premium-minimal, monochrome foundation. It should feel calm and d
 
 Use `AfkColors` for neutral palette values. Components should normally use `Theme.of(context).colorScheme` so host apps can customize the kit without rewriting widgets.
 
+## Form fields
+
+Use `AfkTextField` for consistent labels, hints, helper/error messages, focus borders, and disabled states. Pass localized copy from the host app. Prefer semantic keyboard types and text input actions, and avoid fixed-height wrappers so validation messages and text scaling can expand naturally.
+
 ## Accessibility and localization
 
 - Respect system text scaling; avoid fixed-height text containers.
