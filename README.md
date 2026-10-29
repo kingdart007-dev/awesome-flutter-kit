@@ -6,10 +6,11 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 
 ## What is included
 
-- Monochrome design tokens for color, spacing, and corner radius
+- Monochrome design tokens for color, spacing, corner radius, and motion
 - Light and dark theme factories
 - Reusable button with filled, outlined, text, disabled, and loading states
 - Minimal bordered card, compact badge, and accessible icon button variants
+- Subtle press feedback with reduced-motion support
 - Theme-aware divider with configurable spacing and horizontal insets
 - Reusable text field with labels, hints, helper/error text, obscured input, and enabled states
 - Consistent checkbox and switch tiles for forms and settings, with disabled states
@@ -71,7 +72,7 @@ flutter analyze
 flutter test
 ```
 
-See [Architecture](docs/architecture.md), [Design System](docs/design-system.md), and [Contributing](CONTRIBUTING.md).
+See [Architecture](docs/architecture.md), [Design System](docs/design-system.md), [Mobile UI Scope & Roadmap](docs/ui-scope.md), and [Contributing](CONTRIBUTING.md).
 
 ## License
 
