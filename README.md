@@ -1,6 +1,6 @@
 # Awesome Flutter Kit
 
-A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Built around a quiet monochrome visual language, predictable APIs, accessibility, and maintainable defaults.
+A product-agnostic, reusable Flutter foundation and UI toolkit for Android and iOS. Build many kinds of apps on the same accessible, maintainable, premium-minimal foundation.
 
 > **Status:** Early foundation — APIs may evolve before the first stable release.
 
@@ -36,7 +36,7 @@ flutter pub get
 flutter run
 ```
 
-The example demonstrates controls, navigation, loading states, status messages, confirmation/snackbar patterns, and an illustrative nutrition dashboard with photo-first food logging entry points. Camera, AI recognition, barcode scanning, and food database access are intentionally host-app integrations, not fake implementations in this UI kit.
+The example demonstrates the shared foundation and includes an optional nutrition dashboard as one domain showcase. The core kit is not fitness-specific. Camera, AI recognition, barcode scanning, and food database access are host-app integrations, not fake implementations in this UI kit.
 
 ## Quick start
 
@@ -91,7 +91,7 @@ flutter analyze
 flutter test
 ```
 
-See [Architecture](docs/architecture.md), [Design System](docs/design-system.md), [Nutrition Dashboard UX Patterns](docs/nutrition-dashboard-patterns.md), [Mobile UI Scope & Roadmap](docs/ui-scope.md), and [Contributing](CONTRIBUTING.md).
+See [Architecture](docs/architecture.md), [Design System](docs/design-system.md), [Component Catalog](docs/component-catalog.md), [Nutrition Dashboard UX Patterns](docs/nutrition-dashboard-patterns.md), [Mobile UI Scope & Roadmap](docs/ui-scope.md), and [Contributing](CONTRIBUTING.md).
 
 ## License
 
