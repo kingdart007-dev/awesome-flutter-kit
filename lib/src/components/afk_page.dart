@@ -24,9 +24,7 @@ class AfkPage extends StatelessWidget {
       child: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: maxWidth ?? double.infinity,
-          ),
+          constraints: BoxConstraints(maxWidth: maxWidth ?? double.infinity),
           child: child,
         ),
       ),
