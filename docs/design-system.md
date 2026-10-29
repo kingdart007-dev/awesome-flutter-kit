@@ -37,7 +37,7 @@ The kit uses a premium-minimal, monochrome foundation. It should feel calm and d
 
 ### Color
 
-Use `AfkColors` for neutral palette values. Components should normally use `Theme.of(context).colorScheme` so host apps can customize the kit without rewriting widgets.
+Use `AfkColors` for neutral palette values and shared semantic feedback colors. Components should normally use `Theme.of(context).colorScheme` for host-customizable surfaces and foregrounds. Semantic success and warning tokens provide matched light/dark pairs; avoid hard-coding separate feedback colors in individual widgets.
 
 ## Motion and interaction
 
