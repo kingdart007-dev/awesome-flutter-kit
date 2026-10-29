@@ -493,7 +493,7 @@ void main() {
               data: MediaQuery.of(context).copyWith(disableAnimations: true),
               child: const Scaffold(
                 body: AfkPressable(
-                  onTap: _noop,
+                  onTap: () {},
                   child: Text('Reduced motion'),
                 ),
               ),
