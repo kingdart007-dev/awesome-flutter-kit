@@ -52,6 +52,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
   double _progress = 62;
   int _quantity = 2;
   int _waterMl = 1250;
+  String _selectedDay = 'today';
   final Set<String> _filters = {'All'};
   final TextEditingController _searchController = TextEditingController();
 
@@ -372,6 +373,20 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
             size: 196,
           ),
         ),
+        const SizedBox(height: AfkSpacing.lg),
+        AfkDateSelector(
+          value: _selectedDay,
+          onChanged: (value) => setState(() => _selectedDay = value),
+          options: const [
+            AfkDateOption(value: 'mon', label: 'Mon', caption: '20'),
+            AfkDateOption(value: 'tue', label: 'Tue', caption: '21'),
+            AfkDateOption(value: 'today', label: 'Today', caption: '22'),
+            AfkDateOption(value: 'thu', label: 'Thu', caption: '23'),
+            AfkDateOption(value: 'fri', label: 'Fri', caption: '24'),
+            AfkDateOption(value: 'sat', label: 'Sat', caption: '25'),
+            AfkDateOption(value: 'sun', label: 'Sun', caption: '26'),
+          ],
+        ),
         const SizedBox(height: AfkSpacing.xl),
         const AfkSectionHeader(
           title: 'Daily nutrients',
@@ -415,7 +430,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
         Row(
           children: [
             Expanded(
-              child: Text('Today’s meals', style: theme.textTheme.titleLarge),
+              child: Text(\n                _selectedDay == 'today' ? 'Today’s meals' : 'Meals · $_selectedDay',\n                style: theme.textTheme.titleLarge,\n              ),
             ),
             Text('2 entries', style: theme.textTheme.labelMedium),
           ],
