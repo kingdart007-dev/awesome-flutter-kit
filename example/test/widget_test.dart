@@ -26,7 +26,11 @@ void main() {
       await tester.tap(find.byIcon(Icons.restaurant_outlined));
       await tester.pumpAndSettle();
       expect(find.text('Your day'), findsOneWidget);
-      expect(find.text('Daily nutrients'), findsOneWidget);\n      await tester.tap(find.text('Wed'));\n      await tester.pumpAndSettle();\n      expect(find.text('Meals · thu'), findsNothing);\n      expect(find.text('Meals · wed'), findsOneWidget);
+      expect(find.text('Daily nutrients'), findsOneWidget);
+      await tester.tap(find.text('Wed'));
+      await tester.pumpAndSettle();
+      expect(find.text('Meals · thu'), findsNothing);
+      expect(find.text('Meals · wed'), findsOneWidget);
       expect(find.text('Scan your meal'), findsOneWidget);
       expect(find.text('Water'), findsOneWidget);
       expect(find.text('Grilled chicken bowl'), findsOneWidget);
@@ -35,7 +39,8 @@ void main() {
       expect(find.text('Photo scan'), findsOneWidget);
     },
   );
-\n  testWidgets('appearance menu offers system, light, and dark modes', (
+
+  testWidgets('appearance menu offers system, light, and dark modes', (
     tester,
   ) async {
     await tester.pumpWidget(const KitShowcaseApp());
