@@ -51,6 +51,10 @@ Use `AfkAppBar` for a consistent, low-elevation top bar and `AfkBottomNavigation
 
 Use `AfkSegmentedControl` for two or more mutually exclusive, compact choices; `AfkChoiceChip` for optional filters or compact toggles; and `AfkSlider` for bounded numeric values. Keep selection controlled by the host app, localize labels there, and avoid segmented controls for long lists or complex content.
 
+## Dialogs and transient feedback
+
+Use `AfkConfirmDialog.show` for decisions that need explicit confirmation, including a destructive style when relevant. The host app supplies localized strings and decides when the action is appropriate. Use `AfkSnackBar.show` for brief, non-blocking feedback; do not rely on a snackbar alone for critical errors or actions requiring a decision.
+
 ## Loading and status feedback
 
 Use `AfkSkeleton` to preserve layout while content loads; keep it decorative and exclude it from the accessibility tree. Use `AfkStatusMessage` for concise success, information, or caution feedback. Reserve urgent or blocking problems for the recoverable error state or a platform-appropriate dialog.
