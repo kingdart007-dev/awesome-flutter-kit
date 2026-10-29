@@ -17,8 +17,8 @@ Awesome Flutter Kit is a mobile-first UI system for Android and iOS, not a bag o
 ### 1. Design foundations
 - [x] Neutral color, spacing, radius, and initial motion tokens
 - [x] Light and dark theme factories
-- [ ] Typography roles and density rules
-- [ ] Semantic color roles for success, warning, information, and destructive actions
+- [x] Typography roles and density rules
+- [x] Semantic success, warning, and information colors; destructive feedback uses the theme error role
 - [ ] Icon sizing, stroke, alignment, and directional mirroring rules
 - [ ] Elevation, borders, focus rings, and surface hierarchy
 - [ ] Responsive layout and safe-area conventions
