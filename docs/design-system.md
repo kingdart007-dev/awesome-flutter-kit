@@ -43,6 +43,10 @@ Use `AfkColors` for neutral palette values. Components should normally use `Them
 
 Use `AfkTextField` for consistent labels, hints, helper/error messages, focus borders, and disabled states. Pass localized copy from the host app. Prefer semantic keyboard types and text input actions, and avoid fixed-height wrappers so validation messages and text scaling can expand naturally.
 
+## Selection controls
+
+Use `AfkCheckboxTile` for independent on/off choices and `AfkSwitchTile` for settings that take effect immediately. Both support an optional subtitle, standard full-row interaction, and a disabled state. Keep labels concise, pass localized strings from the host app, and use the callback to update state in the host application rather than introducing hidden state into the component.
+
 ## Accessibility and localization
 
 - Respect system text scaling; avoid fixed-height text containers.
