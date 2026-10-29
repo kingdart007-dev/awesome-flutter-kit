@@ -6,7 +6,7 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 
 ## What is included
 
-- Monochrome design tokens for color, spacing, corner radius, and motion
+- Monochrome design tokens for color, spacing, corner radius, typography, and motion
 - Light and dark theme factories
 - Reusable button with filled, outlined, text, disabled, and loading states
 - Minimal bordered card, compact badge, and accessible icon button variants
