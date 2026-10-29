@@ -1,0 +1,430 @@
+import 'package:awesome_flutter_kit/awesome_flutter_kit.dart';
+import 'package:flutter/material.dart';
+
+void main() => runApp(const KitShowcaseApp());
+
+class KitShowcaseApp extends StatefulWidget {
+  const KitShowcaseApp({super.key});
+
+  @override
+  State<KitShowcaseApp> createState() => _KitShowcaseAppState();
+}
+
+class _KitShowcaseAppState extends State<KitShowcaseApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Awesome Flutter Kit',
+      debugShowCheckedModeBanner: false,
+      theme: AfkTheme.light(),
+      darkTheme: AfkTheme.dark(),
+      themeMode: _themeMode,
+      home: KitShowcaseHome(
+        themeMode: _themeMode,
+        onThemeModeChanged: (value) => setState(() => _themeMode = value),
+      ),
+    );
+  }
+}
+
+class KitShowcaseHome extends StatefulWidget {
+  const KitShowcaseHome({
+    required this.themeMode,
+    required this.onThemeModeChanged,
+    super.key,
+  });
+
+  final ThemeMode themeMode;
+  final ValueChanged<ThemeMode> onThemeModeChanged;
+
+  @override
+  State<KitShowcaseHome> createState() => _KitShowcaseHomeState();
+}
+
+class _KitShowcaseHomeState extends State<KitShowcaseHome> {
+  int _index = 0;
+  String _period = 'Week';
+  bool _notifications = true;
+  bool _compact = false;
+  bool _includeArchived = false;
+  double _progress = 62;
+  final Set<String> _filters = {'All'};
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final titles = ['Design', 'Controls', 'Feedback'];
+    return Scaffold(
+      appBar: AfkAppBar(
+        title: Text(titles[_index]),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: AfkSpacing.xs),
+            child: PopupMenuButton<ThemeMode>(
+              tooltip: 'Appearance',
+              initialValue: widget.themeMode,
+              onSelected: widget.onThemeModeChanged,
+              icon: const Icon(Icons.contrast_outlined),
+              itemBuilder: (context) => const [
+                PopupMenuItem(value: ThemeMode.system, child: Text('System')),
+                PopupMenuItem(value: ThemeMode.light, child: Text('Light')),
+                PopupMenuItem(value: ThemeMode.dark, child: Text('Dark')),
+              ],
+            ),
+          ),
+        ],
+      ),
+      body: AfkPage(
+        padding: EdgeInsets.zero,
+        safeArea: false,
+        child: IndexedStack(
+          index: _index,
+          children: [
+            _buildDesignPage(context),
+            _buildControlsPage(context),
+            _buildFeedbackPage(context),
+          ],
+        ),
+      ),
+      bottomNavigationBar: AfkBottomNavigationBar(
+        selectedIndex: _index,
+        onDestinationSelected: (value) => setState(() => _index = value),
+        items: const [
+          AfkNavigationItem(
+            label: 'Design',
+            icon: Icons.palette_outlined,
+            selectedIcon: Icons.palette,
+          ),
+          AfkNavigationItem(
+            label: 'Controls',
+            icon: Icons.tune_outlined,
+            selectedIcon: Icons.tune,
+          ),
+          AfkNavigationItem(
+            label: 'Feedback',
+            icon: Icons.chat_bubble_outline,
+            selectedIcon: Icons.chat_bubble,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDesignPage(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    return ListView(
+      padding: const EdgeInsets.all(AfkSpacing.lg),
+      children: [
+        Text('A calmer starting point', style: theme.textTheme.headlineSmall),
+        const SizedBox(height: AfkSpacing.xs),
+        Text(
+          'A small, coherent mobile UI system built around clarity, comfortable spacing, and deliberate interaction.',
+          style: theme.textTheme.bodyLarge?.copyWith(
+            color: colors.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(
+          title: 'Surface and hierarchy',
+          subtitle: 'Use space and typography before decoration.',
+        ),
+        const SizedBox(height: AfkSpacing.md),
+        AfkCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text('Weekly overview',
+                        style: theme.textTheme.titleMedium),
+                  ),
+                  const AfkBadge(
+                    label: 'Updated',
+                    variant: AfkBadgeVariant.subtle,
+                    icon: Icons.check,
+                  ),
+                ],
+              ),
+              const SizedBox(height: AfkSpacing.md),
+              Text('Your activity is moving in the right direction.',
+                  style: theme.textTheme.bodyMedium),
+              const SizedBox(height: AfkSpacing.lg),
+              const LinearProgressIndicator(value: 0.72, minHeight: 4),
+              const SizedBox(height: AfkSpacing.sm),
+              Text('72% of your weekly target',
+                  style: theme.textTheme.labelMedium),
+            ],
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Actions'),
+        const SizedBox(height: AfkSpacing.md),
+        Wrap(
+          spacing: AfkSpacing.sm,
+          runSpacing: AfkSpacing.sm,
+          children: [
+            AfkButton(
+              label: 'Primary action',
+              onPressed: () => AfkSnackBar.show(
+                context,
+                message: 'Primary action selected',
+                variant: AfkSnackBarVariant.success,
+              ),
+            ),
+            AfkButton(
+              label: 'Secondary',
+              variant: AfkButtonVariant.outlined,
+              onPressed: () => AfkSnackBar.show(
+                context,
+                message: 'Secondary action selected',
+              ),
+            ),
+            AfkButton(
+              label: 'Text action',
+              variant: AfkButtonVariant.text,
+              onPressed: () => AfkSnackBar.show(
+                context,
+                message: 'Text action selected',
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Motion'),
+        const SizedBox(height: AfkSpacing.md),
+        AfkPressable(
+          onTap: () => AfkSnackBar.show(
+            context,
+            message: 'Press feedback respects reduced-motion settings.',
+          ),
+          child: const AfkCard(
+            child: Row(
+              children: [
+                Icon(Icons.touch_app_outlined),
+                SizedBox(width: AfkSpacing.md),
+                Expanded(child: Text('Tap this surface for subtle feedback')),
+                Icon(Icons.chevron_right),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildControlsPage(BuildContext context) {
+    final theme = Theme.of(context);
+    return ListView(
+      padding: const EdgeInsets.all(AfkSpacing.lg),
+      children: [
+        Text('Input and selection', style: theme.textTheme.headlineSmall),
+        const SizedBox(height: AfkSpacing.xs),
+        Text(
+          'Controlled components keep application state explicit and easy to test.',
+          style: theme.textTheme.bodyMedium,
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Segmented control'),
+        const SizedBox(height: AfkSpacing.sm),
+        AfkSegmentedControl<String>(
+          options: const [
+            AfkSegmentedOption(value: 'Day', label: 'Day'),
+            AfkSegmentedOption(value: 'Week', label: 'Week'),
+            AfkSegmentedOption(value: 'Month', label: 'Month'),
+          ],
+          value: _period,
+          onChanged: (value) => setState(() => _period = value),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Filter chips'),
+        const SizedBox(height: AfkSpacing.sm),
+        Wrap(
+          spacing: AfkSpacing.sm,
+          runSpacing: AfkSpacing.sm,
+          children: ['All', 'Favorites', 'Recent', 'Archived']
+              .map(
+                (label) => AfkChoiceChip(
+                  label: label,
+                  selected: _filters.contains(label),
+                  onSelected: (selected) => setState(() {
+                    if (label == 'All' && selected) {
+                      _filters
+                        ..clear()
+                        ..add('All');
+                    } else {
+                      _filters.remove('All');
+                      if (selected) {
+                        _filters.add(label);
+                      } else {
+                        _filters.remove(label);
+                      }
+                      if (_filters.isEmpty) _filters.add('All');
+                    }
+                  }),
+                ),
+              )
+              .toList(),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Form fields'),
+        const SizedBox(height: AfkSpacing.sm),
+        AfkTextField(
+          label: 'Search',
+          controller: _searchController,
+          hintText: 'Search items',
+          prefixIcon: const Icon(Icons.search),
+          textInputAction: TextInputAction.search,
+        ),
+        const SizedBox(height: AfkSpacing.sm),
+        AfkCheckboxTile(
+          title: 'Include archived items',
+          subtitle: 'Show items that are no longer active',
+          value: _includeArchived,
+          onChanged: (value) =>
+              setState(() => _includeArchived = value ?? false),
+        ),
+        AfkSwitchTile(
+          title: 'Notifications',
+          subtitle: 'Receive useful activity updates',
+          value: _notifications,
+          onChanged: (value) => setState(() => _notifications = value),
+        ),
+        AfkRadioTile<String>(
+          title: 'Comfortable density',
+          value: 'comfortable',
+          groupValue: _compact ? 'compact' : 'comfortable',
+          onChanged: (value) => setState(() => _compact = value == 'compact'),
+        ),
+        AfkRadioTile<String>(
+          title: 'Compact density',
+          value: 'compact',
+          groupValue: _compact ? 'compact' : 'comfortable',
+          onChanged: (value) => setState(() => _compact = value == 'compact'),
+        ),
+        const SizedBox(height: AfkSpacing.md),
+        AfkSlider(
+          value: _progress,
+          min: 0,
+          max: 100,
+          divisions: 20,
+          label: 'Progress',
+          showValue: true,
+          onChanged: (value) => setState(() => _progress = value),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFeedbackPage(BuildContext context) {
+    final theme = Theme.of(context);
+    return ListView(
+      padding: const EdgeInsets.all(AfkSpacing.lg),
+      children: [
+        Text('States and feedback', style: theme.textTheme.headlineSmall),
+        const SizedBox(height: AfkSpacing.xs),
+        Text(
+          'Useful states explain what is happening and provide a clear next step.',
+          style: theme.textTheme.bodyMedium,
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Status messages'),
+        const SizedBox(height: AfkSpacing.sm),
+        const AfkStatusMessage(
+          message: 'Your changes have been saved.',
+          variant: AfkStatusVariant.success,
+        ),
+        const SizedBox(height: AfkSpacing.sm),
+        const AfkStatusMessage(
+          message: 'You are viewing the latest available information.',
+          variant: AfkStatusVariant.info,
+        ),
+        const SizedBox(height: AfkSpacing.sm),
+        const AfkStatusMessage(
+          message: 'Some items may need your attention.',
+          variant: AfkStatusVariant.warning,
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Loading placeholders'),
+        const SizedBox(height: AfkSpacing.md),
+        const AfkCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AfkSkeleton(width: 140, height: 20),
+              SizedBox(height: AfkSpacing.md),
+              AfkSkeleton(width: double.infinity, height: 14),
+              SizedBox(height: AfkSpacing.sm),
+              AfkSkeleton(width: 220, height: 14),
+            ],
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Empty state'),
+        const SizedBox(height: AfkSpacing.md),
+        const AfkCard(
+          child: AfkEmptyState(
+            title: 'Nothing here yet',
+            description:
+                'When you add your first item, it will appear in this space.',
+            icon: Icons.inbox_outlined,
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Recoverable error'),
+        const SizedBox(height: AfkSpacing.md),
+        AfkErrorState(
+          title: 'Could not refresh',
+          description: 'Check your connection and try again.',
+          onRetry: () => AfkSnackBar.show(
+            context,
+            message: 'Retry requested',
+            variant: AfkSnackBarVariant.neutral,
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(title: 'Overlays'),
+        const SizedBox(height: AfkSpacing.md),
+        Wrap(
+          spacing: AfkSpacing.sm,
+          runSpacing: AfkSpacing.sm,
+          children: [
+            AfkButton(
+              label: 'Show snackbar',
+              onPressed: () => AfkSnackBar.show(
+                context,
+                message: 'This is brief, non-blocking feedback.',
+                variant: AfkSnackBarVariant.success,
+              ),
+            ),
+            AfkButton(
+              label: 'Confirm action',
+              variant: AfkButtonVariant.outlined,
+              onPressed: () async {
+                final confirmed = await AfkConfirmDialog.show(
+                  context,
+                  title: 'Continue?',
+                  message: 'This demonstrates a clear confirmation step.',
+                  confirmLabel: 'Continue',
+                  cancelLabel: 'Cancel',
+                );
+                if (context.mounted && confirmed == true) {
+                  AfkSnackBar.show(context, message: 'Confirmed');
+                }
+              },
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
