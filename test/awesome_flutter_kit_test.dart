@@ -451,7 +451,10 @@ void main() {
 
   group('AfkMotion', () {
     test('provides shared short and standard motion timings', () {
-      expect(AfkMotion.fast.inMilliseconds, lessThan(AfkMotion.normal.inMilliseconds));
+      expect(
+        AfkMotion.fast.inMilliseconds,
+        lessThan(AfkMotion.normal.inMilliseconds),
+      );
       expect(
         AfkMotion.normal.inMilliseconds,
         lessThan(AfkMotion.deliberate.inMilliseconds),
@@ -489,15 +492,18 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
-            builder: (context) => MediaQuery(
-              data: MediaQuery.of(context).copyWith(disableAnimations: true),
-              child: const Scaffold(
-                body: AfkPressable(
-                  onTap: () {},
-                  child: Text('Reduced motion'),
+            builder:
+                (context) => MediaQuery(
+                  data: MediaQuery.of(
+                    context,
+                  ).copyWith(disableAnimations: true),
+                  child: const Scaffold(
+                    body: AfkPressable(
+                      onTap: () {},
+                      child: Text('Reduced motion'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
           ),
         ),
       );

@@ -46,9 +46,8 @@ class _AfkPressableState extends State<AfkPressable> {
           onTap: widget.onTap,
           enableFeedback: widget.enableFeedback,
           borderRadius: BorderRadius.circular(widget.borderRadius),
-          onHighlightChanged: enabled
-              ? (value) => setState(() => _pressed = value)
-              : null,
+          onHighlightChanged:
+              enabled ? (value) => setState(() => _pressed = value) : null,
           child: widget.child,
         ),
       ),
