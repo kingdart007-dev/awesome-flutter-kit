@@ -45,11 +45,11 @@ Use `AfkColors` for neutral palette values and shared semantic feedback colors. 
 
 ## Motion and interaction
 
-Use `AfkMotion` for shared durations and easing rather than choosing arbitrary timings per component. `AfkPressable` adds a subtle scale response for custom content, while respecting `MediaQuery.disableAnimations`. Keep feedback quick and interruptible; do not use animation to delay an action. The host app should opt into haptics or sound only when appropriate to the action and user settings.
+Use `AfkMotion` for shared durations and easing rather than choosing arbitrary timings per component.  `AfkPressable` adds a subtle scale response for custom content, while respecting `MediaQuery.disableAnimations`. `AfkContentSwitcher` provides a restrained fade when replacing keyed content and becomes immediate when reduced motion is requested. Keep feedback quick and interruptible; do not use animation to delay an action. The host app should opt into haptics or sound only when appropriate to the action and user settings.
 
 ## Navigation
 
-Use `AfkAppBar` for a consistent, low-elevation top bar and `AfkBottomNavigationBar` for a small set of top-level destinations. Keep the selected index controlled by the app's navigation state, localize destination labels, and preserve platform back behavior in the host app. Avoid using bottom navigation for transient actions or deep hierarchies.
+Use `AfkAppBar` for a consistent, low-elevation top bar and `AfkBottomNavigationBar` for a small set of top-level destinations. Use `AfkTabBar` for closely related sibling views, not top-level app navigation. Pair it with Flutter's `DefaultTabController` or an explicit `TabController` and a `TabBarView`. Keep the selected index controlled by the app's navigation state, localize destination labels, and preserve platform back behavior in the host app. Avoid using bottom navigation for transient actions or deep hierarchies.
 
 ## Selection controls
 
