@@ -610,7 +610,8 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                       'nutrition-label scanning',
                     ),
                   ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -618,7 +619,6 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
       ],
     );
   }
-
 
   void _showIntegrationNotice(
     BuildContext context,
