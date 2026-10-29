@@ -62,7 +62,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
 
   @override
   Widget build(BuildContext context) {
-    final titles = ['Design', 'Controls', 'Feedback'];
+    final titles = ['Design', 'Controls', 'Feedback', 'Nutrition'];
     return Scaffold(
       appBar: AfkAppBar(
         title: Text(titles[_index]),
@@ -92,6 +92,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
             _buildDesignPage(context),
             _buildControlsPage(context),
             _buildFeedbackPage(context),
+            _buildNutritionPage(context),
           ],
         ),
       ),
@@ -113,6 +114,11 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
             label: 'Feedback',
             icon: Icons.chat_bubble_outline,
             selectedIcon: Icons.chat_bubble,
+          ),
+          AfkNavigationItem(
+            label: 'Nutrition',
+            icon: Icons.restaurant_outlined,
+            selectedIcon: Icons.restaurant,
           ),
         ],
       ),
@@ -335,6 +341,154 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           onChanged: (value) => setState(() => _quantity = value),
           decreaseTooltip: 'Decrease quantity',
           increaseTooltip: 'Increase quantity',
+        ),
+      ],
+    );
+  }
+
+
+  Widget _buildNutritionPage(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    return ListView(
+      padding: const EdgeInsets.all(AfkSpacing.lg),
+      children: [
+        Text('Your day', style: theme.textTheme.headlineSmall),
+        const SizedBox(height: AfkSpacing.xs),
+        Text(
+          'A nutrition-dashboard pattern inspired by photo-first trackers. All figures below are illustrative demo data.',
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: colors.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        Center(
+          child: AfkCalorieRing(
+            consumed: 1240,
+            goal: 2100,
+            centerLabel: 'kcal consumed',
+            footerLabel: 'kcal left',
+            size: 196,
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        const AfkSectionHeader(
+          title: 'Daily nutrients',
+          subtitle: 'A quick scan of your macro targets.',
+        ),
+        const SizedBox(height: AfkSpacing.md),
+        const AfkMacroProgress(
+          label: 'Protein',
+          value: 76,
+          goal: 130,
+          unit: 'g',
+        ),
+        const SizedBox(height: AfkSpacing.md),
+        const AfkMacroProgress(
+          label: 'Carbs',
+          value: 118,
+          goal: 220,
+          unit: 'g',
+        ),
+        const SizedBox(height: AfkSpacing.md),
+        const AfkMacroProgress(
+          label: 'Fat',
+          value: 42,
+          goal: 70,
+          unit: 'g',
+        ),
+        const SizedBox(height: AfkSpacing.xl),
+        Row(
+          children: [
+            Expanded(
+              child: Text('Today’s meals', style: theme.textTheme.titleLarge),
+            ),
+            Text('2 entries', style: theme.textTheme.labelMedium),
+          ],
+        ),
+        const SizedBox(height: AfkSpacing.sm),
+        AfkCard(
+          padding: const EdgeInsets.symmetric(vertical: AfkSpacing.xs),
+          child: Column(
+            children: [
+              AfkMealEntryTile(
+                title: 'Greek yogurt bowl',
+                subtitle: 'Breakfast · yogurt, berries, oats',
+                calories: 360,
+                calorieUnit: 'kcal',
+                leading: const Icon(Icons.breakfast_dining_outlined),
+                onTap: () => AfkSnackBar.show(
+                  context,
+                  message: 'Demo entry selected. Your app owns meal details.',
+                ),
+              ),
+              const AfkDivider(spacing: 0, indent: AfkSpacing.sm),
+              AfkMealEntryTile(
+                title: 'Grilled chicken bowl',
+                subtitle: 'Lunch · rice, chicken, vegetables',
+                calories: 640,
+                calorieUnit: 'kcal',
+                leading: const Icon(Icons.lunch_dining_outlined),
+                onTap: () => AfkSnackBar.show(
+                  context,
+                  message: 'Demo entry selected. Your app owns meal details.',
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.lg),
+        AfkButton(
+          label: 'Add food',
+          onPressed: () => AfkBottomSheet.show<void>(
+            context,
+            builder: (sheetContext) => AfkBottomSheet.content(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Add a meal', style: theme.textTheme.titleLarge),
+                  const SizedBox(height: AfkSpacing.sm),
+                  AfkListTile(
+                    title: const Text('Photo scan'),
+                    subtitle: const Text('Connect your host app’s camera flow'),
+                    leading: const Icon(Icons.camera_alt_outlined),
+                    onTap: () {
+                      Navigator.of(sheetContext).pop();
+                      AfkSnackBar.show(
+                        context,
+                        message: 'Showcase only — camera integration is host-owned.',
+                      );
+                    },
+                  ),
+                  AfkListTile(
+                    title: const Text('Search foods'),
+                    subtitle: const Text('Connect your chosen food database'),
+                    leading: const Icon(Icons.search),
+                    onTap: () {
+                      Navigator.of(sheetContext).pop();
+                      AfkSnackBar.show(
+                        context,
+                        message: 'Showcase only — food search is host-owned.',
+                      );
+                    },
+                  ),
+                  AfkListTile(
+                    title: const Text('Barcode scan'),
+                    subtitle: const Text('Connect a barcode scanner and data source'),
+                    leading: const Icon(Icons.qr_code_scanner),
+                    onTap: () {
+                      Navigator.of(sheetContext).pop();
+                      AfkSnackBar.show(
+                        context,
+                        message: 'Showcase only — barcode integration is host-owned.',
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ],
     );
