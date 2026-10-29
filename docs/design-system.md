@@ -101,10 +101,10 @@ Before adding a shared widget, verify that it represents a repeated pattern. Giv
 
 The optional nutrition-oriented primitives are useful for photo-first trackers and similar health products:
 
-- `AfkDateSelector` provides a controlled horizontal date strip; the host app supplies localized dates and calendar semantics.\n- `AfkCalorieRing` summarizes intake against a daily budget. It accepts estimated values from the host app and exposes a semantic value.
+- `AfkDateSelector` provides a controlled horizontal date strip; the host app supplies localized dates and calendar semantics. - `AfkCalorieRing` summarizes intake against a daily budget. It accepts estimated values from the host app and exposes a semantic value.
 - `AfkMacroProgress` compares a nutrient value with its target using a restrained progress track.
 - `AfkMealEntryTile` gives meal history a consistent title, detail line, and calorie summary.
-- `AfkFoodScanCard` provides a prominent entry point for a host-owned camera/AI flow.\n- `AfkFoodEstimateTile` presents an estimated food, portion, and calorie value with an explicit edit action before saving. It does not request camera access or pretend to analyze food.
+- `AfkFoodScanCard` provides a prominent entry point for a host-owned camera/AI flow. - `AfkFoodEstimateTile` presents an estimated food, portion, and calorie value with an explicit edit action before saving. It does not request camera access or pretend to analyze food.
 - `AfkHydrationTracker` shows water intake and emits a controlled increment callback; persistence and goal policy stay in the host app.
 
 These patterns take inspiration from the broader UX principles visible in Cal AI—fast photo-first logging, glanceable calorie and macro summaries, editable meal records, and clear hydration tracking—without copying its brand or implying that this UI kit includes an AI model, food database, or health-data integration.
