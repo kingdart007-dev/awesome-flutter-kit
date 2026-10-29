@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../theme/afk_colors.dart';
 import '../theme/afk_radius.dart';
 import '../theme/afk_spacing.dart';
 
@@ -25,20 +26,20 @@ abstract final class AfkSnackBar {
       AfkSnackBarVariant.success => (
         Icons.check_circle_outline,
         theme.brightness == Brightness.dark
-            ? const Color(0xFF9ADCB3)
-            : const Color(0xFF216E45),
+            ? AfkColors.successForegroundDark
+            : AfkColors.successForegroundLight,
         theme.brightness == Brightness.dark
-            ? const Color(0xFF1C3929)
-            : const Color(0xFFEAF5EE),
+            ? AfkColors.successContainerDark
+            : AfkColors.successContainerLight,
       ),
       AfkSnackBarVariant.warning => (
         Icons.warning_amber_rounded,
         theme.brightness == Brightness.dark
-            ? const Color(0xFFFFD08A)
-            : const Color(0xFF805000),
+            ? AfkColors.warningForegroundDark
+            : AfkColors.warningForegroundLight,
         theme.brightness == Brightness.dark
-            ? const Color(0xFF3B2D16)
-            : const Color(0xFFFFF4DE),
+            ? AfkColors.warningContainerDark
+            : AfkColors.warningContainerLight,
       ),
       AfkSnackBarVariant.error => (
         Icons.error_outline,
