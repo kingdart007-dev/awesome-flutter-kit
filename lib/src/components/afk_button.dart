@@ -27,7 +27,6 @@ class AfkButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final child = Row(
       mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +38,8 @@ class AfkButton extends StatelessWidget {
           )
         else if (leading != null)
           leading!,
-        if (isLoading || leading != null) const SizedBox(width: AfkSpacing.xs),
+        if (isLoading || leading != null)
+          const SizedBox(width: AfkSpacing.xs),
         Flexible(child: Text(label, textAlign: TextAlign.center)),
       ],
     );
@@ -55,7 +55,10 @@ class AfkButton extends StatelessWidget {
           style: FilledButton.styleFrom(
             shape: shape,
             minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(horizontal: AfkSpacing.lg, vertical: AfkSpacing.md),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AfkSpacing.lg,
+              vertical: AfkSpacing.md,
+            ),
           ),
           child: child,
         ),
@@ -64,7 +67,10 @@ class AfkButton extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             shape: shape,
             minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(horizontal: AfkSpacing.lg, vertical: AfkSpacing.md),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AfkSpacing.lg,
+              vertical: AfkSpacing.md,
+            ),
           ),
           child: child,
         ),
@@ -73,7 +79,10 @@ class AfkButton extends StatelessWidget {
           style: TextButton.styleFrom(
             shape: shape,
             minimumSize: const Size(48, 48),
-            padding: const EdgeInsets.symmetric(horizontal: AfkSpacing.md, vertical: AfkSpacing.md),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AfkSpacing.md,
+              vertical: AfkSpacing.md,
+            ),
           ),
           child: child,
         ),
