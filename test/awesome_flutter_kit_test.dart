@@ -544,7 +544,7 @@ void main() {
     });
 
     testWidgets('respects disabled state', (tester) async {
-      var changed = false;
+      final changed = false;
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -608,6 +608,60 @@ void main() {
       expect(find.text('Volume'), findsOneWidget);
       expect(find.text('5'), findsOneWidget);
       expect(find.byType(Slider), findsOneWidget);
+    });
+  });
+
+
+  group('AfkRadioTile', () {
+    testWidgets('shows title and subtitle', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: AfkRadioTile<String>(
+              title: 'Compact',
+              subtitle: 'Use less space',
+              value: 'compact',
+              groupValue: 'comfortable',
+              onChanged: (_) {},
+            ),
+          ),
+        ),
+      );
+      expect(find.text('Compact'), findsOneWidget);
+      expect(find.text('Use less space'), findsOneWidget);
+    });
+  });
+
+  group('AfkSkeleton', () {
+    testWidgets('renders a sized, excluded placeholder', (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: AfkSkeleton(width: 120, height: 20),
+          ),
+        ),
+      );
+      final skeleton = tester.widget<AfkSkeleton>(find.byType(AfkSkeleton));
+      expect(skeleton.width, 120);
+      expect(skeleton.height, 20);
+      expect(find.byType(ExcludeSemantics), findsOneWidget);
+    });
+  });
+
+  group('AfkStatusMessage', () {
+    testWidgets('renders a live-region status message', (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: AfkStatusMessage(
+              message: 'Saved successfully',
+              variant: AfkStatusVariant.success,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('Saved successfully'), findsOneWidget);
+      expect(find.byType(Semantics), findsWidgets);
     });
   });
 
