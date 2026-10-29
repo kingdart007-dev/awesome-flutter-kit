@@ -16,6 +16,7 @@ export 'src/components/afk_choice_chip.dart';
 export 'src/components/afk_confirm_dialog.dart';
 export 'src/components/afk_content_switcher.dart';
 export 'src/components/afk_divider.dart';
+export 'src/components/afk_date_selector.dart';
 export 'src/components/afk_empty_state.dart';
 export 'src/components/afk_error_state.dart';
 export 'src/components/afk_icon_button.dart';
