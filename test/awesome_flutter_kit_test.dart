@@ -4,6 +4,62 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
+  group('AfkExpandableSection', () {
+    testWidgets('reveals secondary content and reports expansion state', (
+      tester,
+    ) async {
+      bool? expanded;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AfkTheme.light(),
+          home: Scaffold(
+            body: AfkExpandableSection(
+              title: const Text('More nutrients'),
+              expandTooltip: 'Expand nutrients',
+              collapseTooltip: 'Collapse nutrients',
+              onExpansionChanged: (value) => expanded = value,
+              child: const Text('Fiber details'),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('Fiber details'), findsNothing);
+      await tester.tap(find.text('More nutrients'));
+      await tester.pumpAndSettle();
+      expect(find.text('Fiber details'), findsOneWidget);
+      expect(expanded, isTrue);
+      await tester.tap(find.text('More nutrients'));
+      await tester.pumpAndSettle();
+      expect(find.text('Fiber details'), findsNothing);
+      expect(expanded, isFalse);
+    });
+
+    testWidgets('uses an immediate transition when reduced motion is set', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(disableAnimations: true),
+            child: const Scaffold(
+              body: AfkExpandableSection(
+                title: Text('Details'),
+                child: Text('Hidden details'),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Details'));
+      await tester.pump();
+      expect(find.text('Hidden details'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+  });
+
+
   testWidgets('nutrition components render in right-to-left layouts', (
     tester,
   ) async {
