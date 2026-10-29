@@ -31,6 +31,7 @@ export 'src/components/afk_skeleton.dart';
 export 'src/components/afk_slider.dart';
 export 'src/components/afk_snack_bar.dart';
 export 'src/components/afk_status_message.dart';
+export 'src/components/afk_stepper.dart';
 export 'src/components/afk_switch_tile.dart';
 export 'src/components/afk_tab_bar.dart';
 export 'src/components/afk_text_field.dart';
