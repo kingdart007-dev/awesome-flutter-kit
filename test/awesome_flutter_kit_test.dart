@@ -713,6 +713,67 @@ void main() {
     });
   });
 
+
+  group('AfkConfirmDialog', () {
+    testWidgets('returns true when the confirm action is selected', (
+      tester,
+    ) async {
+      bool? result;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: TextButton(
+                onPressed: () async {
+                  result = await AfkConfirmDialog.show(
+                    context,
+                    title: 'Delete item?',
+                    message: 'This cannot be undone.',
+                    confirmLabel: 'Delete',
+                    cancelLabel: 'Cancel',
+                    destructive: true,
+                  );
+                },
+                child: const Text('Open dialog'),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.text('Open dialog'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Delete'));
+      await tester.pumpAndSettle();
+      expect(result, isTrue);
+    });
+  });
+
+  group('AfkSnackBar', () {
+    testWidgets('shows a localized message in the scaffold messenger', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: TextButton(
+                onPressed: () => AfkSnackBar.show(
+                  context,
+                  message: 'Changes saved',
+                  variant: AfkSnackBarVariant.success,
+                ),
+                child: const Text('Show feedback'),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.text('Show feedback'));
+      await tester.pump();
+      expect(find.text('Changes saved'), findsOneWidget);
+    });
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
