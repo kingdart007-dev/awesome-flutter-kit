@@ -35,6 +35,10 @@ The kit uses a premium-minimal, monochrome foundation. It should feel calm and d
 | xl | 24 |
 | pill | 999 |
 
+### Typography
+
+`AfkTypography` provides shared roles: page title (24 px), section title (20 px), item title (16 px), body (14 px), and label (14 px semibold). The theme applies these roles to the corresponding Material text styles while preserving a host-customizable theme.
+
 ### Color
 
 Use `AfkColors` for neutral palette values and shared semantic feedback colors. Components should normally use `Theme.of(context).colorScheme` for host-customizable surfaces and foregrounds. Semantic success and warning tokens provide matched light/dark pairs; avoid hard-coding separate feedback colors in individual widgets.
