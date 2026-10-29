@@ -45,12 +45,12 @@ void main() {
       );
       expect(find.text('Grilled chicken bowl'), findsOneWidget);
       await tester.scrollUntilVisible(
-        find.text('Scan your meal'),
+        find.text('Today’s calories'),
         240,
         scrollable: find.byType(Scrollable).first,
       );
-      expect(find.text('Scan your meal'), findsOneWidget);
-      await tester.tap(find.text('Scan your meal'));
+      expect(find.text('Today’s calories'), findsOneWidget);
+      await tester.tap(find.text('Add food'));
       await tester.pumpAndSettle();
       expect(find.text('Photo scan'), findsOneWidget);
     },
