@@ -14,7 +14,7 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Neutral skeleton placeholders and semantic success/info/warning messages
 - Subtle press feedback with reduced-motion support
 - Theme-aware divider with configurable spacing and horizontal insets
-- Reusable text field with labels, hints, helper/error text, obscured input, and enabled states
+- Reusable text and clearable search fields with labels, hints, helper/error text, and enabled states
 - Consistent checkbox and switch tiles for forms and settings, with disabled states
 - Theme-aware app bar and controlled bottom navigation
 - Responsive page layout with consistent padding, safe-area handling, and a readable content width
