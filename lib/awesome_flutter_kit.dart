@@ -3,6 +3,7 @@
 /// Start with [AfkTheme] to apply the kit's monochrome design language, then
 /// compose screens from the small, reusable primitives exported here.
 library;
+
 export 'src/components/afk_activity_entry_tile.dart';
 export 'src/components/afk_app_bar.dart';
 export 'src/components/afk_badge.dart';
