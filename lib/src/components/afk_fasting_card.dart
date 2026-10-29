@@ -45,7 +45,7 @@ class AfkFastingCard extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: colors.surfaceContainerHighest,
+              color: isActive\n                  ? colors.onSurface.withValues(alpha: 0.06)\n                  : colors.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(AfkRadius.md),
             ),
             alignment: Alignment.center,
