@@ -527,7 +527,8 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           onTap: () => AfkBottomSheet.show<void>(
             context,
             builder: (sheetContext) => AfkBottomSheet.content(
-              child: Column(
+              child: SingleChildScrollView(
+                child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
