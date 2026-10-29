@@ -33,4 +33,5 @@ export 'src/theme/afk_colors.dart';
 export 'src/theme/afk_motion.dart';
 export 'src/theme/afk_radius.dart';
 export 'src/theme/afk_spacing.dart';
+export 'src/theme/afk_typography.dart';
 export 'src/theme/afk_theme.dart';
