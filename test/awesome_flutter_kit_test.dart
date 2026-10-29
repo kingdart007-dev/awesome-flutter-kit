@@ -255,7 +255,14 @@ void main() {
 
       final fields =
           tester.widgetList<TextFormField>(find.byType(TextFormField)).toList();
-      expect(fields[0].obscureText, isTrue);
+      final obscuredField = tester.widget<EditableText>(
+        find.descendant(
+          of: find.byType(AfkTextField).first,
+          matching: find.byType(EditableText),
+        ),
+      );
+
+      expect(obscuredField.obscureText, isTrue);
       expect(fields[1].enabled, isFalse);
     });
   });
