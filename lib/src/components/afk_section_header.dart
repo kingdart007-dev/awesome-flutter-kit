@@ -26,7 +26,12 @@ class AfkSectionHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+              Text(
+                title,
+                style: textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               if (subtitle != null) ...[
                 const SizedBox(height: AfkSpacing.xxs),
                 Text(subtitle!, style: textTheme.bodySmall),
