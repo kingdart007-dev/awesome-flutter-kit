@@ -61,7 +61,7 @@ Use `AfkConfirmDialog.show` for decisions that need explicit confirmation, inclu
 
 ## Loading and status feedback
 
-Use `AfkSkeleton` to preserve layout while content loads; keep it decorative and exclude it from the accessibility tree. Use `AfkStatusMessage` for concise success, information, or caution feedback. Reserve urgent or blocking problems for the recoverable error state or a platform-appropriate dialog.
+Use `AfkProgressBar` for determinate or indeterminate work and expose a concise label when progress needs context. Use `AfkSkeleton` to preserve layout while content loads; keep it decorative and exclude it from the accessibility tree. Use `AfkStatusMessage` for concise success, information, or caution feedback. Reserve urgent or blocking problems for the recoverable error state or a platform-appropriate dialog.
 
 ## Search
 
