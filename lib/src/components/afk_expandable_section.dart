@@ -15,6 +15,7 @@ class AfkExpandableSection extends StatefulWidget {
     this.leading,
     this.expandTooltip,
     this.collapseTooltip,
+    this.onExpansionChanged,
     super.key,
   });
 
@@ -24,6 +25,7 @@ class AfkExpandableSection extends StatefulWidget {
   final Widget? leading;
   final String? expandTooltip;
   final String? collapseTooltip;
+  final ValueChanged<bool>? onExpansionChanged;
 
   @override
   State<AfkExpandableSection> createState() => _AfkExpandableSectionState();
@@ -45,6 +47,9 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
     final theme = Theme.of(context);
     final reduceMotion = MediaQuery.of(context).disableAnimations;
     final duration = reduceMotion ? Duration.zero : AfkMotion.normal;
+    final tooltip = _expanded
+        ? widget.collapseTooltip
+        : widget.expandTooltip;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -55,7 +60,11 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () => setState(() => _expanded = !_expanded),
+              onTap: () {
+                final next = !_expanded;
+                setState(() => _expanded = next);
+                widget.onExpansionChanged?.call(next);
+              },
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: AfkSpacing.sm,
@@ -69,19 +78,22 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
                     ],
                     Expanded(child: widget.title),
                     const SizedBox(width: AfkSpacing.sm),
-                    Tooltip(
-                      message: _expanded
-                          ? (widget.collapseTooltip ?? '')
-                          : (widget.expandTooltip ?? ''),
-                      child: AnimatedRotation(
-                        turns: _expanded ? 0.5 : 0,
-                        duration: duration,
-                        curve: AfkMotion.standard,
-                        child: Icon(
-                          Icons.expand_more,
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
+                    AnimatedRotation(
+                      turns: _expanded ? 0.5 : 0,
+                      duration: duration,
+                      curve: AfkMotion.standard,
+                      child: tooltip == null
+                          ? Icon(
+                              Icons.expand_more,
+                              color: theme.colorScheme.onSurfaceVariant,
+                            )
+                          : Tooltip(
+                              message: tooltip,
+                              child: Icon(
+                                Icons.expand_more,
+                                color: theme.colorScheme.onSurfaceVariant,
+                              ),
+                            ),
                     ),
                   ],
                 ),
@@ -93,23 +105,15 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
           duration: duration,
           curve: AfkMotion.standard,
           alignment: Alignment.topCenter,
-          child: Align(
-            alignment: Alignment.topCenter,
-            heightFactor: _expanded ? 1 : 0,
-            child: IgnorePointer(
-              ignoring: !_expanded,
-              child: ExcludeSemantics(
-                excluding: !_expanded,
-                child: Padding(
+          child: _expanded
+              ? Padding(
                   padding: const EdgeInsets.only(
                     top: AfkSpacing.xs,
                     bottom: AfkSpacing.md,
                   ),
                   child: widget.child,
-                ),
-              ),
-            ),
-          ),
+                )
+              : const SizedBox.shrink(),
         ),
       ],
     );
