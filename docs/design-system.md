@@ -95,3 +95,16 @@ Use `AfkCheckboxTile` for independent on/off choices and `AfkSwitchTile` for set
 ## Adding a component
 
 Before adding a shared widget, verify that it represents a repeated pattern. Give it a narrow API, predictable defaults, both-theme support, disabled/loading/error states where relevant, and tests for meaningful behavior.
+
+
+## Nutrition dashboard patterns
+
+The optional nutrition-oriented primitives are useful for photo-first trackers and similar health products:
+
+- `AfkCalorieRing` summarizes intake against a daily budget. It accepts estimated values from the host app and exposes a semantic value.
+- `AfkMacroProgress` compares a nutrient value with its target using a restrained progress track.
+- `AfkMealEntryTile` gives meal history a consistent title, detail line, and calorie summary.
+- `AfkFoodScanCard` provides a prominent entry point for a host-owned camera/AI flow. It does not request camera access or pretend to analyze food.
+- `AfkHydrationTracker` shows water intake and emits a controlled increment callback; persistence and goal policy stay in the host app.
+
+These patterns take inspiration from the broader UX principles visible in Cal AI—fast photo-first logging, glanceable calorie and macro summaries, editable meal records, and clear hydration tracking—without copying its brand or implying that this UI kit includes an AI model, food database, or health-data integration.
