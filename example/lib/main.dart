@@ -398,7 +398,6 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           goal: 70,
           unit: 'g',
         ),
-        const SizedBox(height: AfkSpacing.xl),
         const SizedBox(height: AfkSpacing.lg),
         AfkCard(
           child: AfkHydrationTracker(
@@ -408,7 +407,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
             amountLabel: 'Add a glass whenever you need it.',
             addTooltip: 'Add 250 ml of water',
             onAdd: (amount) => setState(() {
-              _waterMl = (_waterMl + amount).clamp(0, 2500);
+              _waterMl = (_waterMl + amount).clamp(0, 2500).toInt();
             }),
           ),
         ),
@@ -431,7 +430,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                 subtitle: 'Breakfast · yogurt, berries, oats',
                 calories: 360,
                 calorieUnit: 'kcal',
-                leading: const Icon(Icons.breakfast_dining_outlined),
+                leading: const Icon(Icons.restaurant_outlined),
                 onTap: () => AfkSnackBar.show(
                   context,
                   message: 'Demo entry selected. Your app owns meal details.',
@@ -443,7 +442,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                 subtitle: 'Lunch · rice, chicken, vegetables',
                 calories: 640,
                 calorieUnit: 'kcal',
-                leading: const Icon(Icons.lunch_dining_outlined),
+                leading: const Icon(Icons.rice_bowl_outlined),
                 onTap: () => AfkSnackBar.show(
                   context,
                   message: 'Demo entry selected. Your app owns meal details.',
