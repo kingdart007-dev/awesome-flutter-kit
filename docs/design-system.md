@@ -59,6 +59,10 @@ Use `AfkConfirmDialog.show` for decisions that need explicit confirmation, inclu
 
 Use `AfkSkeleton` to preserve layout while content loads; keep it decorative and exclude it from the accessibility tree. Use `AfkStatusMessage` for concise success, information, or caution feedback. Reserve urgent or blocking problems for the recoverable error state or a platform-appropriate dialog.
 
+## Search
+
+Use `AfkSearchField` for query-driven filtering or lookup. The host app owns the controller and search behavior; the component only reports edits and provides an accessible clear action. Supply localized hint and clear-tooltip text, debounce expensive searches in the host layer, and preserve the query when returning from a result if that matches the task flow.
+
 ## Form fields
 
 Use `AfkTextField` for consistent labels, hints, helper/error messages, focus borders, and disabled states. Pass localized copy from the host app. Prefer semantic keyboard types and text input actions, and avoid fixed-height wrappers so validation messages and text scaling can expand naturally.
