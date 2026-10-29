@@ -4,7 +4,9 @@
 /// compose screens from the small, reusable primitives exported here.
 library;
 
+export 'src/components/afk_app_bar.dart';
 export 'src/components/afk_badge.dart';
+export 'src/components/afk_bottom_navigation_bar.dart';
 export 'src/components/afk_button.dart';
 export 'src/components/afk_card.dart';
 export 'src/components/afk_choice_chip.dart';
