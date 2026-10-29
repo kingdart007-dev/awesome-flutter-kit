@@ -22,10 +22,12 @@ class AfkStatusMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
     final (foreground, background, defaultIcon) = switch (variant) {
       AfkStatusVariant.success => (
-        const Color(0xFF216E45),
-        const Color(0xFF216E45).withValues(alpha: 0.09),
+        isDark ? const Color(0xFF9ADCB3) : const Color(0xFF216E45),
+        (isDark ? const Color(0xFF9ADCB3) : const Color(0xFF216E45))
+            .withValues(alpha: 0.10),
         Icons.check_circle_outline,
       ),
       AfkStatusVariant.info => (
@@ -34,8 +36,9 @@ class AfkStatusMessage extends StatelessWidget {
         Icons.info_outline,
       ),
       AfkStatusVariant.warning => (
-        const Color(0xFF8A5700),
-        const Color(0xFF8A5700).withValues(alpha: 0.09),
+        isDark ? const Color(0xFFFFD08A) : const Color(0xFF805000),
+        (isDark ? const Color(0xFFFFD08A) : const Color(0xFF805000))
+            .withValues(alpha: 0.10),
         Icons.warning_amber_rounded,
       ),
     };
