@@ -51,6 +51,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
   bool _includeArchived = false;
   double _progress = 62;
   int _quantity = 2;
+  int _waterMl = 1250;
   final Set<String> _filters = {'All'};
   final TextEditingController _searchController = TextEditingController();
 
@@ -398,6 +399,20 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           unit: 'g',
         ),
         const SizedBox(height: AfkSpacing.xl),
+        const SizedBox(height: AfkSpacing.lg),
+        AfkCard(
+          child: AfkHydrationTracker(
+            currentMl: _waterMl,
+            goalMl: 2500,
+            title: 'Water',
+            amountLabel: 'Add a glass whenever you need it.',
+            addTooltip: 'Add 250 ml of water',
+            onAdd: (amount) => setState(() {
+              _waterMl = (_waterMl + amount).clamp(0, 2500);
+            }),
+          ),
+        ),
+        const SizedBox(height: AfkSpacing.xl),
         Row(
           children: [
             Expanded(
@@ -438,9 +453,11 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           ),
         ),
         const SizedBox(height: AfkSpacing.lg),
-        AfkButton(
-          label: 'Add food',
-          onPressed: () => AfkBottomSheet.show<void>(
+        AfkFoodScanCard(
+          title: 'Scan your meal',
+          description: 'Capture a plate and review an editable estimate.',
+          actionLabel: 'Choose a logging method',
+          onTap: () => AfkBottomSheet.show<void>(
             context,
             builder: (sheetContext) => AfkBottomSheet.content(
               child: Column(
