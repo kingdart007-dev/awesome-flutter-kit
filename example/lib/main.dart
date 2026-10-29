@@ -50,6 +50,7 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
   bool _compact = false;
   bool _includeArchived = false;
   double _progress = 62;
+  int _quantity = 2;
   final Set<String> _filters = {'All'};
   final TextEditingController _searchController = TextEditingController();
 
@@ -320,6 +321,20 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           label: 'Progress',
           showValue: true,
           onChanged: (value) => setState(() => _progress = value),
+        ),
+        const SizedBox(height: AfkSpacing.lg),
+        const AfkSectionHeader(
+          title: 'Numeric stepper',
+          subtitle: 'Bounded adjustments with accessible actions.',
+        ),
+        AfkStepper(
+          label: 'Quantity',
+          value: _quantity,
+          min: 1,
+          max: 5,
+          onChanged: (value) => setState(() => _quantity = value),
+          decreaseTooltip: 'Decrease quantity',
+          increaseTooltip: 'Increase quantity',
         ),
       ],
     );
