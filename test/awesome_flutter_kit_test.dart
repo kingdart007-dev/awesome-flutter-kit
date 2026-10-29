@@ -802,6 +802,7 @@ void main() {
       );
 
       await tester.enterText(find.byType(TextField), 'sample');
+      await tester.pumpAndSettle();
       expect(changes.last, 'sample');
       await tester.tap(find.byTooltip('Clear search'));
       await tester.pumpAndSettle();
