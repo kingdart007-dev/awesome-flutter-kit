@@ -47,6 +47,10 @@ Use `AfkMotion` for shared durations and easing rather than choosing arbitrary t
 
 Use `AfkSegmentedControl` for two or more mutually exclusive, compact choices; `AfkChoiceChip` for optional filters or compact toggles; and `AfkSlider` for bounded numeric values. Keep selection controlled by the host app, localize labels there, and avoid segmented controls for long lists or complex content.
 
+## Loading and status feedback
+
+Use `AfkSkeleton` to preserve layout while content loads; keep it decorative and exclude it from the accessibility tree. Use `AfkStatusMessage` for concise success, information, or caution feedback. Reserve urgent or blocking problems for the recoverable error state or a platform-appropriate dialog.
+
 ## Form fields
 
 Use `AfkTextField` for consistent labels, hints, helper/error messages, focus borders, and disabled states. Pass localized copy from the host app. Prefer semantic keyboard types and text input actions, and avoid fixed-height wrappers so validation messages and text scaling can expand naturally.
