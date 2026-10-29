@@ -10,6 +10,7 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Light and dark theme factories
 - Reusable button with filled, outlined, text, disabled, and loading states
 - Minimal bordered card, compact badge, and accessible icon button variants
+- Controlled segmented selector, selectable chips, and a labelled slider
 - Subtle press feedback with reduced-motion support
 - Theme-aware divider with configurable spacing and horizontal insets
 - Reusable text field with labels, hints, helper/error text, obscured input, and enabled states
