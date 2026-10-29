@@ -9,6 +9,14 @@ void main() {
       expect(AfkTheme.dark().brightness, Brightness.dark);
     });
 
+    test('applies the shared typography scale', () {
+      final textTheme = AfkTheme.light().textTheme;
+      expect(textTheme.headlineSmall?.fontSize, AfkTypography.pageTitle.fontSize);
+      expect(textTheme.titleLarge?.fontSize, AfkTypography.sectionTitle.fontSize);
+      expect(textTheme.titleMedium?.fontSize, AfkTypography.itemTitle.fontSize);
+      expect(textTheme.bodyMedium?.fontSize, AfkTypography.body.fontSize);
+    });
+
     test('keeps a monochrome primary color in both themes', () {
       expect(AfkTheme.light().colorScheme.primary, AfkColors.black);
       expect(AfkTheme.dark().colorScheme.primary, AfkColors.white);
