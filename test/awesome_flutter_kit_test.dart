@@ -641,7 +641,13 @@ void main() {
       final skeleton = tester.widget<AfkSkeleton>(find.byType(AfkSkeleton));
       expect(skeleton.width, 120);
       expect(skeleton.height, 20);
-      expect(find.byType(ExcludeSemantics), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byType(AfkSkeleton),
+          matching: find.byType(ExcludeSemantics),
+        ),
+        findsOneWidget,
+      );
     });
   });
 
