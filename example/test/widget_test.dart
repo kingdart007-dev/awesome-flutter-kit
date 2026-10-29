@@ -26,6 +26,11 @@ void main() {
       await tester.tap(find.byIcon(Icons.restaurant_outlined));
       await tester.pumpAndSettle();
       expect(find.text('Your day'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.text('Daily nutrients'),
+        240,
+        scrollable: find.byType(Scrollable).first,
+      );
       expect(find.text('Daily nutrients'), findsOneWidget);
       await tester.scrollUntilVisible(
         find.text('Water'),
