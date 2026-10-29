@@ -19,7 +19,7 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Theme-aware app bar and controlled bottom navigation
 - Responsive page layout with consistent padding, safe-area handling, and a readable content width
 - Confirmation dialog, floating snackbar feedback, section header, empty-state, loading, and recoverable error-state primitives
-- Widget tests and Dart analysis rules
+- Nutrition dashboard primitives: calorie-budget ring, macro progress, and meal diary rows\n- Reusable tab bar, reduced-motion content transitions, and bounded numeric stepper\n- Widget tests and Dart analysis rules
 - GitHub Actions quality workflow
 
 ## Accessibility and localization
@@ -36,7 +36,7 @@ flutter pub get
 flutter run
 ```
 
-The example demonstrates controls, navigation, loading states, status messages, and confirmation/snackbar patterns.
+The example demonstrates controls, navigation, loading states, status messages, confirmation/snackbar patterns, and an illustrative nutrition dashboard with photo-first food logging entry points. Camera, AI recognition, barcode scanning, and food database access are intentionally host-app integrations, not fake implementations in this UI kit.
 
 ## Quick start
 
