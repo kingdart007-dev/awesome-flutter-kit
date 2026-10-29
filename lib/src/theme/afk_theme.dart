@@ -67,9 +67,9 @@ abstract final class AfkTheme {
       ),
       dividerTheme: DividerThemeData(color: outline, thickness: 1, space: 1),
       textTheme: ThemeData(brightness: brightness).textTheme.apply(
-            bodyColor: foreground,
-            displayColor: foreground,
-          ),
+        bodyColor: foreground,
+        displayColor: foreground,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: surface,
