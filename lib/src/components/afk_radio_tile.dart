@@ -1,3 +1,7 @@
+// RadioListTile's groupValue/onChanged API remains necessary for Flutter
+// 3.29 compatibility, which is the package's declared minimum SDK.
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 /// A consistent radio row for selecting one option from a group.
