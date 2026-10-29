@@ -50,6 +50,15 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
     final tooltip = _expanded
         ? widget.collapseTooltip
         : widget.expandTooltip;
+    final disclosure = _expanded
+        ? Padding(
+            padding: const EdgeInsets.only(
+              top: AfkSpacing.xs,
+              bottom: AfkSpacing.md,
+            ),
+            child: widget.child,
+          )
+        : const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -101,20 +110,15 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
             ),
           ),
         ),
-        AnimatedSize(
-          duration: duration,
-          curve: AfkMotion.standard,
-          alignment: Alignment.topCenter,
-          child: _expanded
-              ? Padding(
-                  padding: const EdgeInsets.only(
-                    top: AfkSpacing.xs,
-                    bottom: AfkSpacing.md,
-                  ),
-                  child: widget.child,
-                )
-              : const SizedBox.shrink(),
-        ),
+        if (reduceMotion)
+          disclosure
+        else
+          AnimatedSize(
+            duration: duration,
+            curve: AfkMotion.standard,
+            alignment: Alignment.topCenter,
+            child: disclosure,
+          ),
       ],
     );
   }
