@@ -22,6 +22,18 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Widget tests and Dart analysis rules
 - GitHub Actions quality workflow
 
+## Interactive example
+
+Run the included showcase app to explore the components and switch between light, dark, and system themes:
+
+```sh
+cd example
+flutter pub get
+flutter run
+```
+
+The example demonstrates controls, navigation, loading states, status messages, and confirmation/snackbar patterns.
+
 ## Quick start
 
 Add the package to your Flutter project's dependencies (use a Git dependency until a package release is published):
