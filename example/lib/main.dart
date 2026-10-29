@@ -365,13 +365,19 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           ),
         ),
         const SizedBox(height: AfkSpacing.xl),
-        Center(
-          child: AfkCalorieRing(
-            consumed: 1240,
-            goal: 2100,
-            centerLabel: 'kcal consumed',
-            footerLabel: 'kcal left',
-            size: 196,
+        AfkNutritionHero(
+          title: 'Today’s calories',
+          consumed: 1240,
+          goal: 2100,
+          consumedLabel: 'kcal consumed',
+          goalLabel: 'kcal goal',
+          remainingLabel: 'kcal left',
+          addFoodLabel: 'Add food',
+          breakdownLabel: 'Nutrition details',
+          onAddFood: () => _showAddFoodMethods(context),
+          onViewBreakdown: () => AfkSnackBar.show(
+            context,
+            message: 'Nutrition details are shown in Daily nutrients below.',
           ),
         ),
         const SizedBox(height: AfkSpacing.lg),
@@ -520,103 +526,68 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           ),
         ),
         const SizedBox(height: AfkSpacing.lg),
-        AfkFoodScanCard(
-          title: 'Scan your meal',
-          description: 'Capture a plate and review an editable estimate.',
-          actionLabel: 'Choose a logging method',
-          onTap: () => AfkBottomSheet.show<void>(
-            context,
-            builder: (sheetContext) => AfkBottomSheet.content(
-              child: SingleChildScrollView(
-                child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Add a meal', style: theme.textTheme.titleLarge),
-                  const SizedBox(height: AfkSpacing.sm),
-                  AfkListTile(
-                    title: const Text('Photo scan'),
-                    subtitle: const Text('Connect your host app’s camera flow'),
-                    leading: const Icon(Icons.camera_alt_outlined),
-                    onTap: () {
-                      _showIntegrationNotice(
-                        context,
-                        sheetContext,
-                        'camera capture',
-                      );
-                    },
-                  ),
-                  AfkListTile(
-                    title: const Text('Search foods'),
-                    subtitle: const Text('Connect your chosen food database'),
-                    leading: const Icon(Icons.search),
-                    onTap: () {
-                      _showIntegrationNotice(
-                        context,
-                        sheetContext,
-                        'food search',
-                      );
-                    },
-                  ),
-                  AfkListTile(
-                    title: const Text('Barcode scan'),
-                    subtitle: const Text('Connect a barcode scanner and data source'),
-                    leading: const Icon(Icons.qr_code_scanner),
-                    onTap: () {
-                      _showIntegrationNotice(
-                        context,
-                        sheetContext,
-                        'barcode scanning',
-                      );
-                    },
-                  ),
-                  AfkListTile(
-                    title: const Text('Choose from gallery'),
-                    subtitle: const Text('Select an existing meal photo'),
-                    leading: const Icon(Icons.photo_library_outlined),
-                    onTap: () => _showIntegrationNotice(
-                      context,
-                      sheetContext,
-                      'gallery selection',
-                    ),
-                  ),
-                  AfkListTile(
-                    title: const Text('Describe by voice'),
-                    subtitle: const Text('Connect speech input and parsing'),
-                    leading: const Icon(Icons.mic_none),
-                    onTap: () => _showIntegrationNotice(
-                      context,
-                      sheetContext,
-                      'voice logging',
-                    ),
-                  ),
-                  AfkListTile(
-                    title: const Text('Manual entry'),
-                    subtitle: const Text('Enter food and portion details'),
-                    leading: const Icon(Icons.edit_note),
-                    onTap: () => _showIntegrationNotice(
-                      context,
-                      sheetContext,
-                      'manual entry',
-                    ),
-                  ),
-                  AfkListTile(
-                    title: const Text('Nutrition label'),
-                    subtitle: const Text('Read packaged-food nutrition facts'),
-                    leading: const Icon(Icons.document_scanner),
-                    onTap: () => _showIntegrationNotice(
-                      context,
-                      sheetContext,
-                      'nutrition-label scanning',
-                    ),
-                  ),
-                  ],
-                ),
+      ],
+    );
+  }
+
+  void _showAddFoodMethods(BuildContext context) {
+    final theme = Theme.of(context);
+    AfkBottomSheet.show<void>(
+      context,
+      builder: (sheetContext) => AfkBottomSheet.content(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Add a meal', style: theme.textTheme.titleLarge),
+              const SizedBox(height: AfkSpacing.sm),
+              AfkListTile(
+                title: const Text('Photo scan'),
+                subtitle: const Text('Connect your host app’s camera flow'),
+                leading: const Icon(Icons.camera_alt_outlined),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'camera capture'),
               ),
-            ),
+              AfkListTile(
+                title: const Text('Search foods'),
+                subtitle: const Text('Connect your chosen food database'),
+                leading: const Icon(Icons.search),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'food search'),
+              ),
+              AfkListTile(
+                title: const Text('Barcode scan'),
+                subtitle: const Text('Connect a barcode scanner and data source'),
+                leading: const Icon(Icons.qr_code_scanner),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'barcode scanning'),
+              ),
+              AfkListTile(
+                title: const Text('Choose from gallery'),
+                subtitle: const Text('Select an existing meal photo'),
+                leading: const Icon(Icons.photo_library_outlined),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'gallery selection'),
+              ),
+              AfkListTile(
+                title: const Text('Describe by voice'),
+                subtitle: const Text('Connect speech input and parsing'),
+                leading: const Icon(Icons.mic_none),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'voice logging'),
+              ),
+              AfkListTile(
+                title: const Text('Manual entry'),
+                subtitle: const Text('Enter food and portion details'),
+                leading: const Icon(Icons.edit_note),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'manual entry'),
+              ),
+              AfkListTile(
+                title: const Text('Nutrition label'),
+                subtitle: const Text('Read packaged-food nutrition facts'),
+                leading: const Icon(Icons.document_scanner),
+                onTap: () => _showIntegrationNotice(context, sheetContext, 'nutrition-label scanning'),
+              ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
