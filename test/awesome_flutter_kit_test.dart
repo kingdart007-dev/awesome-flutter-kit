@@ -282,30 +282,31 @@ void main() {
     testWidgets(
       'renders title and subtitle and reports changes',
       (tester) async {
-      bool? changedValue;
+        bool? changedValue;
 
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AfkTheme.light(),
-          home: Scaffold(
-            body: AfkCheckboxTile(
-              title: 'Remember me',
-              subtitle: 'Keep this preference on this device.',
-              value: false,
-              onChanged: (value) => changedValue = value,
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AfkTheme.light(),
+            home: Scaffold(
+              body: AfkCheckboxTile(
+                title: 'Remember me',
+                subtitle: 'Keep this preference on this device.',
+                value: false,
+                onChanged: (value) => changedValue = value,
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      expect(find.text('Remember me'), findsOneWidget);
-      expect(
-        find.text('Keep this preference on this device.'),
-        findsOneWidget,
-      );
-      await tester.tap(find.byType(CheckboxListTile));
-      expect(changedValue, isTrue);
-    });
+        expect(find.text('Remember me'), findsOneWidget);
+        expect(
+          find.text('Keep this preference on this device.'),
+          findsOneWidget,
+        );
+        await tester.tap(find.byType(CheckboxListTile));
+        expect(changedValue, isTrue);
+      },
+    );
 
     testWidgets('does not respond when disabled', (tester) async {
       bool? changedValue;
