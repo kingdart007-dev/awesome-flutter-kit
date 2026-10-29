@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'afk_colors.dart';
 import 'afk_radius.dart';
+import 'afk_typography.dart';
 
 /// Theme factory for Awesome Flutter Kit.
 ///
@@ -65,9 +66,10 @@ abstract final class AfkTheme {
         ),
       ),
       dividerTheme: DividerThemeData(color: outline, thickness: 1, space: 1),
-      textTheme: ThemeData(
-        brightness: brightness,
-      ).textTheme.apply(bodyColor: foreground, displayColor: foreground),
+      textTheme: AfkTypography.apply(
+        ThemeData(brightness: brightness).textTheme,
+        foreground,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: surface,
