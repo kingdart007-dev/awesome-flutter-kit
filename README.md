@@ -22,6 +22,10 @@ A polished, reusable Flutter foundation and UI toolkit for Android and iOS. Buil
 - Widget tests and Dart analysis rules
 - GitHub Actions quality workflow
 
+## Accessibility and localization
+
+See [Accessibility and localization](docs/accessibility-and-localization.md) for Arabic/RTL, semantics, reduced-motion, and release verification guidance.
+
 ## Interactive example
 
 Run the included showcase app to explore the components and switch between light, dark, and system themes:
