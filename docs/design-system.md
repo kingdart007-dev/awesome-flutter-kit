@@ -67,6 +67,10 @@ Use `AfkProgressBar` for determinate or indeterminate work and expose a concise 
 
 Use `AfkSearchField` for query-driven filtering or lookup. The host app owns the controller and search behavior; the component only reports edits and provides an accessible clear action. Supply localized hint and clear-tooltip text, debounce expensive searches in the host layer, and preserve the query when returning from a result if that matches the task flow.
 
+## Lists and sheets
+
+Use `AfkListTile` for simple, consistent rows with optional leading/trailing content and supporting text. Use `AfkBottomSheet.show` for modal tasks that should remain in context; prefer a scrollable child for long content and let the host application own the form state and translated copy.
+
 ## Form fields
 
 Use `AfkTextField` for consistent labels, hints, helper/error messages, focus borders, and disabled states. Pass localized copy from the host app. Prefer semantic keyboard types and text input actions, and avoid fixed-height wrappers so validation messages and text scaling can expand naturally.
