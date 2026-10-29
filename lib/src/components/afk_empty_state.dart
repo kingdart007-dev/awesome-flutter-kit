@@ -27,9 +27,17 @@ class AfkEmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 32, color: theme.colorScheme.onSurfaceVariant),
+            Icon(
+              icon,
+              size: 32,
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
             const SizedBox(height: AfkSpacing.lg),
-            Text(title, style: theme.textTheme.titleMedium, textAlign: TextAlign.center),
+            Text(
+              title,
+              style: theme.textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: AfkSpacing.xs),
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 360),
