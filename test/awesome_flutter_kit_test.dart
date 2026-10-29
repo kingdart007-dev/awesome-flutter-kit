@@ -112,6 +112,28 @@ void main() {
     },
   );
 
+  testWidgets('AfkPage applies readable width and renders its child', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: AfkPage(
+            child: Text('Page content'),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Page content'), findsOneWidget);
+
+    final constraints = tester.widget<ConstrainedBox>(
+      find.descendant(
+        of: find.byType(AfkPage),
+        matching: find.byType(ConstrainedBox),
+      ),
+    );
+    expect(constraints.constraints.maxWidth, 640);
+  });
+
   testWidgets('AfkEmptyState shows its content', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
