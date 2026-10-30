@@ -32,6 +32,7 @@ export 'src/components/afk_macro_progress.dart';
 export 'src/components/afk_meal_entry_tile.dart';
 export 'src/components/afk_nutrition_hero.dart';
 export 'src/components/afk_page.dart';
+export 'src/components/afk_password_field.dart';
 export 'src/components/afk_pressable.dart';
 export 'src/components/afk_progress_bar.dart';
 export 'src/components/afk_radio_tile.dart';
