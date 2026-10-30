@@ -93,7 +93,7 @@ flutter analyze
 flutter test
 ```
 
-See [Architecture](docs/architecture.md), [Design System](docs/design-system.md), [Component Catalog](docs/component-catalog.md), [Nutrition Dashboard UX Patterns](docs/nutrition-dashboard-patterns.md), [Mobile UI Scope & Roadmap](docs/ui-scope.md), and [Contributing](CONTRIBUTING.md).
+See [Architecture](docs/architecture.md), [Design System](docs/design-system.md), [Motion & Performance Standards](docs/motion-and-performance.md), [Component Catalog](docs/component-catalog.md), [Nutrition Dashboard UX Patterns](docs/nutrition-dashboard-patterns.md), [Mobile UI Scope & Roadmap](docs/ui-scope.md), and [Contributing](CONTRIBUTING.md).
 
 ## License
 
