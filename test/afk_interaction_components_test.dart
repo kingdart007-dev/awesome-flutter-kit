@@ -39,8 +39,10 @@ void main() {
 
       expect(find.text('Saving'), findsOneWidget);
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
-      expect(tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
-          isNull);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
+        isNull,
+      );
     });
   });
 
