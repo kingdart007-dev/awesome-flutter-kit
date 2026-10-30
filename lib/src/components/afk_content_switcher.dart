@@ -28,10 +28,9 @@ class AfkContentSwitcher extends StatelessWidget {
       duration: reduceMotion ? Duration.zero : duration,
       switchInCurve: switchInCurve,
       switchOutCurve: switchOutCurve,
-      transitionBuilder: (child, animation) => FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
+      transitionBuilder:
+          (child, animation) =>
+              FadeTransition(opacity: animation, child: child),
       child: child,
     );
   }

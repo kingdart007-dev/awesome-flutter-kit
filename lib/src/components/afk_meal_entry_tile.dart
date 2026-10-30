@@ -32,28 +32,31 @@ class AfkMealEntryTile extends StatelessWidget {
       onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(horizontal: AfkSpacing.sm),
       minLeadingWidth: 44,
-      leading: leading == null
-          ? null
-          : SizedBox(
-              width: 44,
-              height: 44,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Center(child: leading),
+      leading:
+          leading == null
+              ? null
+              : SizedBox(
+                width: 44,
+                height: 44,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Center(child: leading),
+                ),
               ),
-            ),
       title: Text(title, maxLines: 2, overflow: TextOverflow.ellipsis),
-      subtitle: subtitle == null
-          ? null
-          : Padding(
-              padding: const EdgeInsets.only(top: AfkSpacing.xxs),
-              child: Text(
-                subtitle!,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+      subtitle:
+          subtitle == null
+              ? null
+              : Padding(
+                padding: const EdgeInsets.only(top: AfkSpacing.xxs),
+                child: Text(
+                  subtitle!,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-      trailing: trailing ??
+      trailing:
+          trailing ??
           Padding(
             padding: const EdgeInsets.only(left: AfkSpacing.xs),
             child: Column(

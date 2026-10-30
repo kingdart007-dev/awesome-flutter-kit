@@ -11,10 +11,7 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: Scaffold(
-            body: AfkButton(
-              label: 'Continue',
-              onPressed: () => pressed = true,
-            ),
+            body: AfkButton(label: 'Continue', onPressed: () => pressed = true),
           ),
         ),
       );
@@ -28,11 +25,7 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: const Scaffold(
-            body: AfkButton(
-              label: 'Saving',
-              onPressed: null,
-              isLoading: true,
-            ),
+            body: AfkButton(label: 'Saving', onPressed: null, isLoading: true),
           ),
         ),
       );
@@ -47,9 +40,7 @@ void main() {
   });
 
   group('AfkPressable', () {
-    testWidgets('reports a tap without owning the host action', (
-      tester,
-    ) async {
+    testWidgets('reports a tap without owning the host action', (tester) async {
       var tapped = false;
 
       await tester.pumpWidget(
@@ -132,28 +123,35 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: Builder(
-            builder: (context) => Scaffold(
-              body: Center(
-                child: FilledButton(
-                  onPressed: () => AfkBottomSheet.show<void>(
-                    context,
-                    builder: (sheetContext) => AfkBottomSheet.content(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text('Sheet content'),
-                          TextButton(
-                            onPressed: () => Navigator.of(sheetContext).pop(),
-                            child: const Text('Close sheet'),
+            builder:
+                (context) => Scaffold(
+                  body: Center(
+                    child: FilledButton(
+                      onPressed:
+                          () => AfkBottomSheet.show<void>(
+                            context,
+                            builder:
+                                (sheetContext) => AfkBottomSheet.content(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Text('Sheet content'),
+                                      TextButton(
+                                        onPressed:
+                                            () =>
+                                                Navigator.of(
+                                                  sheetContext,
+                                                ).pop(),
+                                        child: const Text('Close sheet'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                           ),
-                        ],
-                      ),
+                      child: const Text('Open sheet'),
                     ),
                   ),
-                  child: const Text('Open sheet'),
                 ),
-              ),
-            ),
           ),
         ),
       );

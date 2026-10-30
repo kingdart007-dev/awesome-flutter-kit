@@ -77,11 +77,15 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
               initialValue: widget.themeMode,
               onSelected: widget.onThemeModeChanged,
               icon: const Icon(Icons.contrast_outlined),
-              itemBuilder: (context) => const [
-                PopupMenuItem(value: ThemeMode.system, child: Text('System')),
-                PopupMenuItem(value: ThemeMode.light, child: Text('Light')),
-                PopupMenuItem(value: ThemeMode.dark, child: Text('Dark')),
-              ],
+              itemBuilder:
+                  (context) => const [
+                    PopupMenuItem(
+                      value: ThemeMode.system,
+                      child: Text('System'),
+                    ),
+                    PopupMenuItem(value: ThemeMode.light, child: Text('Light')),
+                    PopupMenuItem(value: ThemeMode.dark, child: Text('Dark')),
+                  ],
             ),
           ),
         ],
@@ -155,8 +159,10 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
               Row(
                 children: [
                   Expanded(
-                    child: Text('Weekly overview',
-                        style: theme.textTheme.titleMedium),
+                    child: Text(
+                      'Weekly overview',
+                      style: theme.textTheme.titleMedium,
+                    ),
                   ),
                   const AfkBadge(
                     label: 'Updated',
@@ -166,13 +172,21 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                 ],
               ),
               const SizedBox(height: AfkSpacing.md),
-              Text('Your activity is moving in the right direction.',
-                  style: theme.textTheme.bodyMedium),
+              Text(
+                'Your activity is moving in the right direction.',
+                style: theme.textTheme.bodyMedium,
+              ),
               const SizedBox(height: AfkSpacing.lg),
-              const AfkProgressBar(value: 0.72, label: 'Weekly target', showValue: true),
+              const AfkProgressBar(
+                value: 0.72,
+                label: 'Weekly target',
+                showValue: true,
+              ),
               const SizedBox(height: AfkSpacing.sm),
-              Text('72% of your weekly target',
-                  style: theme.textTheme.labelMedium),
+              Text(
+                '72% of your weekly target',
+                style: theme.textTheme.labelMedium,
+              ),
             ],
           ),
         ),
@@ -185,27 +199,30 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           children: [
             AfkButton(
               label: 'Primary action',
-              onPressed: () => AfkSnackBar.show(
-                context,
-                message: 'Primary action selected',
-                variant: AfkSnackBarVariant.success,
-              ),
+              onPressed:
+                  () => AfkSnackBar.show(
+                    context,
+                    message: 'Primary action selected',
+                    variant: AfkSnackBarVariant.success,
+                  ),
             ),
             AfkButton(
               label: 'Secondary',
               variant: AfkButtonVariant.outlined,
-              onPressed: () => AfkSnackBar.show(
-                context,
-                message: 'Secondary action selected',
-              ),
+              onPressed:
+                  () => AfkSnackBar.show(
+                    context,
+                    message: 'Secondary action selected',
+                  ),
             ),
             AfkButton(
               label: 'Text action',
               variant: AfkButtonVariant.text,
-              onPressed: () => AfkSnackBar.show(
-                context,
-                message: 'Text action selected',
-              ),
+              onPressed:
+                  () => AfkSnackBar.show(
+                    context,
+                    message: 'Text action selected',
+                  ),
             ),
           ],
         ),
@@ -213,10 +230,11 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
         const AfkSectionHeader(title: 'Motion'),
         const SizedBox(height: AfkSpacing.md),
         AfkPressable(
-          onTap: () => AfkSnackBar.show(
-            context,
-            message: 'Press feedback respects reduced-motion settings.',
-          ),
+          onTap:
+              () => AfkSnackBar.show(
+                context,
+                message: 'Press feedback respects reduced-motion settings.',
+              ),
           child: const AfkCard(
             child: Row(
               children: [
@@ -261,29 +279,31 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
         Wrap(
           spacing: AfkSpacing.sm,
           runSpacing: AfkSpacing.sm,
-          children: ['All', 'Favorites', 'Recent', 'Archived']
-              .map(
-                (label) => AfkChoiceChip(
-                  label: label,
-                  selected: _filters.contains(label),
-                  onSelected: (selected) => setState(() {
-                    if (label == 'All' && selected) {
-                      _filters
-                        ..clear()
-                        ..add('All');
-                    } else {
-                      _filters.remove('All');
-                      if (selected) {
-                        _filters.add(label);
-                      } else {
-                        _filters.remove(label);
-                      }
-                      if (_filters.isEmpty) _filters.add('All');
-                    }
-                  }),
-                ),
-              )
-              .toList(),
+          children:
+              ['All', 'Favorites', 'Recent', 'Archived']
+                  .map(
+                    (label) => AfkChoiceChip(
+                      label: label,
+                      selected: _filters.contains(label),
+                      onSelected:
+                          (selected) => setState(() {
+                            if (label == 'All' && selected) {
+                              _filters
+                                ..clear()
+                                ..add('All');
+                            } else {
+                              _filters.remove('All');
+                              if (selected) {
+                                _filters.add(label);
+                              } else {
+                                _filters.remove(label);
+                              }
+                              if (_filters.isEmpty) _filters.add('All');
+                            }
+                          }),
+                    ),
+                  )
+                  .toList(),
         ),
         const SizedBox(height: AfkSpacing.xl),
         const AfkSectionHeader(title: 'Form fields'),
@@ -300,8 +320,8 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           title: 'Include archived items',
           subtitle: 'Show items that are no longer active',
           value: _includeArchived,
-          onChanged: (value) =>
-              setState(() => _includeArchived = value ?? false),
+          onChanged:
+              (value) => setState(() => _includeArchived = value ?? false),
         ),
         AfkSwitchTile(
           title: 'Notifications',
@@ -349,7 +369,6 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
     );
   }
 
-
   Widget _buildNutritionPage(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
@@ -375,10 +394,12 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           addFoodLabel: 'Add food',
           breakdownLabel: 'Nutrition details',
           onAddFood: () => _showAddFoodMethods(context),
-          onViewBreakdown: () => AfkSnackBar.show(
-            context,
-            message: 'Nutrition details are shown in Daily nutrients below.',
-          ),
+          onViewBreakdown:
+              () => AfkSnackBar.show(
+                context,
+                message:
+                    'Nutrition details are shown in Daily nutrients below.',
+              ),
         ),
         const SizedBox(height: AfkSpacing.lg),
         AfkDateSelector(
@@ -414,17 +435,13 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           unit: 'g',
         ),
         const SizedBox(height: AfkSpacing.md),
-        const AfkMacroProgress(
-          label: 'Fat',
-          value: 42,
-          goal: 70,
-          unit: 'g',
-        ),
+        const AfkMacroProgress(label: 'Fat', value: 42, goal: 70, unit: 'g'),
 
         const SizedBox(height: AfkSpacing.lg),
         AfkFastingCard(
           title: 'Fasting window',
-          statusLabel: _fastingActive ? 'Session in progress' : 'Session paused',
+          statusLabel:
+              _fastingActive ? 'Session in progress' : 'Session paused',
           durationLabel: '12 h 20 min',
           actionLabel: _fastingActive ? 'End' : 'Start',
           isActive: _fastingActive,
@@ -438,9 +455,10 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
             title: 'Water',
             amountLabel: 'Add a glass whenever you need it.',
             addTooltip: 'Add 250 ml of water',
-            onAdd: (amount) => setState(() {
-              _waterMl = (_waterMl + amount).clamp(0, 2500).toInt();
-            }),
+            onAdd:
+                (amount) => setState(() {
+                  _waterMl = (_waterMl + amount).clamp(0, 2500).toInt();
+                }),
           ),
         ),
         const SizedBox(height: AfkSpacing.xl),
@@ -448,7 +466,9 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           children: [
             Expanded(
               child: Text(
-                _selectedDay == 'today' ? 'Today’s meals' : 'Meals · $_selectedDay',
+                _selectedDay == 'today'
+                    ? 'Today’s meals'
+                    : 'Meals · $_selectedDay',
                 style: theme.textTheme.titleLarge,
               ),
             ),
@@ -466,10 +486,12 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                 calories: 360,
                 calorieUnit: 'kcal',
                 leading: const Icon(Icons.restaurant_outlined),
-                onTap: () => AfkSnackBar.show(
-                  context,
-                  message: 'Demo entry selected. Your app owns meal details.',
-                ),
+                onTap:
+                    () => AfkSnackBar.show(
+                      context,
+                      message:
+                          'Demo entry selected. Your app owns meal details.',
+                    ),
               ),
               const AfkDivider(spacing: 0, indent: AfkSpacing.sm),
               AfkMealEntryTile(
@@ -478,15 +500,16 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
                 calories: 640,
                 calorieUnit: 'kcal',
                 leading: const Icon(Icons.fastfood_outlined),
-                onTap: () => AfkSnackBar.show(
-                  context,
-                  message: 'Demo entry selected. Your app owns meal details.',
-                ),
+                onTap:
+                    () => AfkSnackBar.show(
+                      context,
+                      message:
+                          'Demo entry selected. Your app owns meal details.',
+                    ),
               ),
             ],
           ),
         ),
-
 
         const SizedBox(height: AfkSpacing.xl),
         const AfkSectionHeader(
@@ -519,10 +542,12 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
             calorieUnit: 'kcal',
             editLabel: 'Edit',
             leading: const Icon(Icons.fastfood_outlined),
-            onEdit: () => AfkSnackBar.show(
-              context,
-              message: 'Demo only — portion editing belongs to the host flow.',
-            ),
+            onEdit:
+                () => AfkSnackBar.show(
+                  context,
+                  message:
+                      'Demo only — portion editing belongs to the host flow.',
+                ),
           ),
         ),
         const SizedBox(height: AfkSpacing.lg),
@@ -534,60 +559,98 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
     final theme = Theme.of(context);
     AfkBottomSheet.show<void>(
       context,
-      builder: (sheetContext) => AfkBottomSheet.content(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Add a meal', style: theme.textTheme.titleLarge),
-              const SizedBox(height: AfkSpacing.sm),
-              AfkListTile(
-                title: const Text('Photo scan'),
-                subtitle: const Text('Connect your host app’s camera flow'),
-                leading: const Icon(Icons.camera_alt_outlined),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'camera capture'),
+      builder:
+          (sheetContext) => AfkBottomSheet.content(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Add a meal', style: theme.textTheme.titleLarge),
+                  const SizedBox(height: AfkSpacing.sm),
+                  AfkListTile(
+                    title: const Text('Photo scan'),
+                    subtitle: const Text('Connect your host app’s camera flow'),
+                    leading: const Icon(Icons.camera_alt_outlined),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'camera capture',
+                        ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Search foods'),
+                    subtitle: const Text('Connect your chosen food database'),
+                    leading: const Icon(Icons.search),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'food search',
+                        ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Barcode scan'),
+                    subtitle: const Text(
+                      'Connect a barcode scanner and data source',
+                    ),
+                    leading: const Icon(Icons.qr_code_scanner),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'barcode scanning',
+                        ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Choose from gallery'),
+                    subtitle: const Text('Select an existing meal photo'),
+                    leading: const Icon(Icons.photo_library_outlined),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'gallery selection',
+                        ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Describe by voice'),
+                    subtitle: const Text('Connect speech input and parsing'),
+                    leading: const Icon(Icons.mic_none),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'voice logging',
+                        ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Manual entry'),
+                    subtitle: const Text('Enter food and portion details'),
+                    leading: const Icon(Icons.edit_note),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'manual entry',
+                        ),
+                  ),
+                  AfkListTile(
+                    title: const Text('Nutrition label'),
+                    subtitle: const Text('Read packaged-food nutrition facts'),
+                    leading: const Icon(Icons.document_scanner),
+                    onTap:
+                        () => _showIntegrationNotice(
+                          context,
+                          sheetContext,
+                          'nutrition-label scanning',
+                        ),
+                  ),
+                ],
               ),
-              AfkListTile(
-                title: const Text('Search foods'),
-                subtitle: const Text('Connect your chosen food database'),
-                leading: const Icon(Icons.search),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'food search'),
-              ),
-              AfkListTile(
-                title: const Text('Barcode scan'),
-                subtitle: const Text('Connect a barcode scanner and data source'),
-                leading: const Icon(Icons.qr_code_scanner),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'barcode scanning'),
-              ),
-              AfkListTile(
-                title: const Text('Choose from gallery'),
-                subtitle: const Text('Select an existing meal photo'),
-                leading: const Icon(Icons.photo_library_outlined),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'gallery selection'),
-              ),
-              AfkListTile(
-                title: const Text('Describe by voice'),
-                subtitle: const Text('Connect speech input and parsing'),
-                leading: const Icon(Icons.mic_none),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'voice logging'),
-              ),
-              AfkListTile(
-                title: const Text('Manual entry'),
-                subtitle: const Text('Enter food and portion details'),
-                leading: const Icon(Icons.edit_note),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'manual entry'),
-              ),
-              AfkListTile(
-                title: const Text('Nutrition label'),
-                subtitle: const Text('Read packaged-food nutrition facts'),
-                leading: const Icon(Icons.document_scanner),
-                onTap: () => _showIntegrationNotice(context, sheetContext, 'nutrition-label scanning'),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
     );
   }
 
@@ -663,11 +726,12 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
         AfkErrorState(
           title: 'Could not refresh',
           description: 'Check your connection and try again.',
-          onRetry: () => AfkSnackBar.show(
-            context,
-            message: 'Retry requested',
-            variant: AfkSnackBarVariant.neutral,
-          ),
+          onRetry:
+              () => AfkSnackBar.show(
+                context,
+                message: 'Retry requested',
+                variant: AfkSnackBarVariant.neutral,
+              ),
         ),
         const SizedBox(height: AfkSpacing.xl),
         const AfkSectionHeader(title: 'Overlays'),
@@ -678,38 +742,44 @@ class _KitShowcaseHomeState extends State<KitShowcaseHome> {
           children: [
             AfkButton(
               label: 'Show snackbar',
-              onPressed: () => AfkSnackBar.show(
-                context,
-                message: 'This is brief, non-blocking feedback.',
-                variant: AfkSnackBarVariant.success,
-              ),
+              onPressed:
+                  () => AfkSnackBar.show(
+                    context,
+                    message: 'This is brief, non-blocking feedback.',
+                    variant: AfkSnackBarVariant.success,
+                  ),
             ),
             AfkButton(
               label: 'Open bottom sheet',
               variant: AfkButtonVariant.outlined,
-              onPressed: () => AfkBottomSheet.show<void>(
-                context,
-                builder: (sheetContext) => AfkBottomSheet.content(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Quick actions', style: theme.textTheme.titleLarge),
-                      const SizedBox(height: AfkSpacing.md),
-                      AfkListTile(
-                        title: const Text('Edit details'),
-                        leading: const Icon(Icons.edit_outlined),
-                        onTap: () => Navigator.of(sheetContext).pop(),
-                      ),
-                      AfkListTile(
-                        title: const Text('Manage preferences'),
-                        leading: const Icon(Icons.tune_outlined),
-                        onTap: () => Navigator.of(sheetContext).pop(),
-                      ),
-                    ],
+              onPressed:
+                  () => AfkBottomSheet.show<void>(
+                    context,
+                    builder:
+                        (sheetContext) => AfkBottomSheet.content(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Quick actions',
+                                style: theme.textTheme.titleLarge,
+                              ),
+                              const SizedBox(height: AfkSpacing.md),
+                              AfkListTile(
+                                title: const Text('Edit details'),
+                                leading: const Icon(Icons.edit_outlined),
+                                onTap: () => Navigator.of(sheetContext).pop(),
+                              ),
+                              AfkListTile(
+                                title: const Text('Manage preferences'),
+                                leading: const Icon(Icons.tune_outlined),
+                                onTap: () => Navigator.of(sheetContext).pop(),
+                              ),
+                            ],
+                          ),
+                        ),
                   ),
-                ),
-              ),
             ),
             AfkButton(
               label: 'Confirm action',

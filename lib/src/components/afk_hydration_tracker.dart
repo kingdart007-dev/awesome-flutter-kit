@@ -43,9 +43,7 @@ class AfkHydrationTracker extends StatelessWidget {
             children: [
               Icon(Icons.water_drop_outlined, color: colors.onSurfaceVariant),
               const SizedBox(width: AfkSpacing.sm),
-              Expanded(
-                child: Text(title, style: theme.textTheme.titleMedium),
-              ),
+              Expanded(child: Text(title, style: theme.textTheme.titleMedium)),
               Text(
                 '$currentMl / $goalMl $unitLabel',
                 style: theme.textTheme.labelMedium?.copyWith(
@@ -55,13 +53,8 @@ class AfkHydrationTracker extends StatelessWidget {
               const SizedBox(width: AfkSpacing.xs),
               IconButton(
                 tooltip: addTooltip,
-                onPressed: onAdd == null
-                    ? null
-                    : () => onAdd!(addAmountMl),
-                constraints: const BoxConstraints(
-                  minWidth: 48,
-                  minHeight: 48,
-                ),
+                onPressed: onAdd == null ? null : () => onAdd!(addAmountMl),
+                constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
                 icon: const Icon(Icons.add),
               ),
             ],

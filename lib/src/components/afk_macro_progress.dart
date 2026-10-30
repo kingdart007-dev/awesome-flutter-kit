@@ -36,9 +36,7 @@ class AfkMacroProgress extends StatelessWidget {
           children: [
             Row(
               children: [
-                Expanded(
-                  child: Text(label, style: theme.textTheme.labelLarge),
-                ),
+                Expanded(child: Text(label, style: theme.textTheme.labelLarge)),
                 if (showValues)
                   Text(
                     valueText,

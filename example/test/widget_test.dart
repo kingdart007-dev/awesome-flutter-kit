@@ -19,39 +19,38 @@ void main() {
     expect(find.text('States and feedback'), findsOneWidget);
   });
 
-  testWidgets(
-    'nutrition dashboard displays summary and quick-add options',
-    (tester) async {
-      await tester.pumpWidget(const KitShowcaseApp());
-      await tester.tap(find.byIcon(Icons.restaurant_outlined));
-      await tester.pumpAndSettle();
-      expect(find.text('Your day'), findsOneWidget);
-      expect(find.text('Today’s calories'), findsOneWidget);
-      await tester.tap(find.text('Add food'));
-      await tester.pumpAndSettle();
-      expect(find.text('Photo scan'), findsOneWidget);
-      await tester.tap(find.text('Photo scan'));
-      await tester.pumpAndSettle();
-      await tester.scrollUntilVisible(
-        find.text('Daily nutrients'),
-        240,
-        scrollable: find.byType(Scrollable).first,
-      );
-      expect(find.text('Daily nutrients'), findsOneWidget);
-      await tester.scrollUntilVisible(
-        find.text('Water'),
-        240,
-        scrollable: find.byType(Scrollable).first,
-      );
-      expect(find.text('Water'), findsOneWidget);
-      await tester.scrollUntilVisible(
-        find.text('Grilled chicken bowl'),
-        240,
-        scrollable: find.byType(Scrollable).first,
-      );
-      expect(find.text('Grilled chicken bowl'), findsOneWidget);
-    },
-  );
+  testWidgets('nutrition dashboard displays summary and quick-add options', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const KitShowcaseApp());
+    await tester.tap(find.byIcon(Icons.restaurant_outlined));
+    await tester.pumpAndSettle();
+    expect(find.text('Your day'), findsOneWidget);
+    expect(find.text('Today’s calories'), findsOneWidget);
+    await tester.tap(find.text('Add food'));
+    await tester.pumpAndSettle();
+    expect(find.text('Photo scan'), findsOneWidget);
+    await tester.tap(find.text('Photo scan'));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.text('Daily nutrients'),
+      240,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('Daily nutrients'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Water'),
+      240,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('Water'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Grilled chicken bowl'),
+      240,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.text('Grilled chicken bowl'), findsOneWidget);
+  });
 
   testWidgets('appearance menu offers system, light, and dark modes', (
     tester,

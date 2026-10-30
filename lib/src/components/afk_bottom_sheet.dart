@@ -32,9 +32,7 @@ abstract final class AfkBottomSheet {
       showDragHandle: enableDrag,
       clipBehavior: Clip.antiAlias,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AfkRadius.xl),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AfkRadius.xl)),
       ),
       constraints: const BoxConstraints(maxWidth: 640),
     );
@@ -42,9 +40,6 @@ abstract final class AfkBottomSheet {
 
   /// Adds predictable inner spacing to sheet content.
   static Widget content({required Widget child}) {
-    return Padding(
-      padding: const EdgeInsets.all(AfkSpacing.lg),
-      child: child,
-    );
+    return Padding(padding: const EdgeInsets.all(AfkSpacing.lg), child: child);
   }
 }

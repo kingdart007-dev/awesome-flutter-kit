@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('shows calorie budget and exposes photo-first action', (tester) async {
+  testWidgets('shows calorie budget and exposes photo-first action', (
+    tester,
+  ) async {
     var added = false;
     var openedBreakdown = false;
 
@@ -37,7 +39,9 @@ void main() {
     expect(openedBreakdown, isTrue);
   });
 
-  testWidgets('clearly reports when consumption exceeds the goal', (tester) async {
+  testWidgets('clearly reports when consumption exceeds the goal', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(

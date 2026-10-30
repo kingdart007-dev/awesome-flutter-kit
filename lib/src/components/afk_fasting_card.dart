@@ -45,9 +45,10 @@ class AfkFastingCard extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: isActive
-                  ? colors.onSurface.withValues(alpha: 0.06)
-                  : colors.surfaceContainerHighest,
+              color:
+                  isActive
+                      ? colors.onSurface.withValues(alpha: 0.06)
+                      : colors.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(AfkRadius.md),
             ),
             alignment: Alignment.center,
@@ -77,10 +78,7 @@ class AfkFastingCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: AfkSpacing.xs),
-          TextButton(
-            onPressed: onAction,
-            child: Text(actionLabel),
-          ),
+          TextButton(onPressed: onAction, child: Text(actionLabel)),
         ],
       ),
     );

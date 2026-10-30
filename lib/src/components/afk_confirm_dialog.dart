@@ -37,12 +37,13 @@ abstract final class AfkConfirmDialog {
               child: Text(cancelLabel),
             ),
             FilledButton(
-              style: destructive
-                  ? FilledButton.styleFrom(
-                      backgroundColor: colors.error,
-                      foregroundColor: colors.onError,
-                    )
-                  : null,
+              style:
+                  destructive
+                      ? FilledButton.styleFrom(
+                        backgroundColor: colors.error,
+                        foregroundColor: colors.onError,
+                      )
+                      : null,
               onPressed: () => Navigator.of(dialogContext).pop(true),
               child: Text(confirmLabel),
             ),

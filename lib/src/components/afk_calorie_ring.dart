@@ -35,7 +35,8 @@ class AfkCalorieRing extends StatelessWidget {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
     final progress = (consumed / goal).clamp(0.0, 1.0);
-    final remainingValue = remaining ?? (goal - consumed).clamp(0.0, double.infinity);
+    final remainingValue =
+        remaining ?? (goal - consumed).clamp(0.0, double.infinity);
 
     return Semantics(
       label: centerLabel,

@@ -35,12 +35,14 @@ abstract final class AfkTypography {
   );
 
   static TextTheme apply(TextTheme base, Color foreground) {
-    return base.apply(bodyColor: foreground, displayColor: foreground).copyWith(
-      headlineSmall: pageTitle.copyWith(color: foreground),
-      titleLarge: sectionTitle.copyWith(color: foreground),
-      titleMedium: itemTitle.copyWith(color: foreground),
-      bodyMedium: body.copyWith(color: foreground),
-      labelLarge: label.copyWith(color: foreground),
-    );
+    return base
+        .apply(bodyColor: foreground, displayColor: foreground)
+        .copyWith(
+          headlineSmall: pageTitle.copyWith(color: foreground),
+          titleLarge: sectionTitle.copyWith(color: foreground),
+          titleMedium: itemTitle.copyWith(color: foreground),
+          bodyMedium: body.copyWith(color: foreground),
+          labelLarge: label.copyWith(color: foreground),
+        );
   }
 }

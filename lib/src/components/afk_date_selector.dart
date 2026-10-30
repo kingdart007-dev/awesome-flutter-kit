@@ -8,11 +8,7 @@ import '../theme/afk_spacing.dart';
 /// The host supplies stable values and localized labels; this widget does not
 /// assume a week start, calendar locale, or date arithmetic policy.
 class AfkDateOption {
-  const AfkDateOption({
-    required this.value,
-    required this.label,
-    this.caption,
-  });
+  const AfkDateOption({required this.value, required this.label, this.caption});
 
   final String value;
   final String label;
@@ -99,9 +95,10 @@ class _AfkDateOptionButton extends StatelessWidget {
       button: true,
       selected: selected,
       enabled: enabled,
-      label: option.caption == null
-          ? option.label
-          : '${option.label}, ${option.caption}',
+      label:
+          option.caption == null
+              ? option.label
+              : '${option.label}, ${option.caption}',
       child: ExcludeSemantics(
         child: Material(
           color: selected ? colors.primary : colors.surface,
@@ -137,9 +134,9 @@ class _AfkDateOptionButton extends StatelessWidget {
                       option.caption!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: foreground,
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelSmall?.copyWith(color: foreground),
                     ),
                   ],
                 ],

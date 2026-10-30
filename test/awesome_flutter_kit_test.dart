@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-
   group('AfkExpandableSection', () {
     testWidgets('reveals secondary content and reports expansion state', (
       tester,
@@ -59,7 +58,6 @@ void main() {
     });
   });
 
-
   testWidgets('nutrition components render in right-to-left layouts', (
     tester,
   ) async {
@@ -75,8 +73,16 @@ void main() {
                 children: [
                   AfkDateSelector(
                     options: [
-                      AfkDateOption(value: 'today', label: 'اليوم', caption: '٢٢'),
-                      AfkDateOption(value: 'tomorrow', label: 'غدًا', caption: '٢٣'),
+                      AfkDateOption(
+                        value: 'today',
+                        label: 'اليوم',
+                        caption: '٢٢',
+                      ),
+                      AfkDateOption(
+                        value: 'tomorrow',
+                        label: 'غدًا',
+                        caption: '٢٣',
+                      ),
                     ],
                     value: 'today',
                     onChanged: null,
@@ -101,7 +107,6 @@ void main() {
     expect(find.text('دجاج مشوي'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
-
 
   group('AfkFastingCard', () {
     testWidgets('shows session status and invokes the host action', (
@@ -151,7 +156,6 @@ void main() {
     });
   });
 
-
   group('AfkFoodEstimateTile', () {
     testWidgets('shows portion estimate and allows editing', (tester) async {
       var edited = false;
@@ -179,7 +183,6 @@ void main() {
     });
   });
 
-
   group('AfkDateSelector', () {
     testWidgets('shows date options and reports selection', (tester) async {
       String selected = 'today';
@@ -187,17 +190,22 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: StatefulBuilder(
-            builder: (context, setState) => Scaffold(
-              body: AfkDateSelector(
-                options: const [
-                  AfkDateOption(value: 'mon', label: 'Mon', caption: '21'),
-                  AfkDateOption(value: 'today', label: 'Today', caption: '22'),
-                  AfkDateOption(value: 'wed', label: 'Wed', caption: '23'),
-                ],
-                value: selected,
-                onChanged: (value) => setState(() => selected = value),
-              ),
-            ),
+            builder:
+                (context, setState) => Scaffold(
+                  body: AfkDateSelector(
+                    options: const [
+                      AfkDateOption(value: 'mon', label: 'Mon', caption: '21'),
+                      AfkDateOption(
+                        value: 'today',
+                        label: 'Today',
+                        caption: '22',
+                      ),
+                      AfkDateOption(value: 'wed', label: 'Wed', caption: '23'),
+                    ],
+                    value: selected,
+                    onChanged: (value) => setState(() => selected = value),
+                  ),
+                ),
           ),
         ),
       );
@@ -208,7 +216,6 @@ void main() {
       expect(selected, 'wed');
     });
   });
-
 
   group('AfkFoodScanCard', () {
     testWidgets('presents the scan action and handles taps', (tester) async {
@@ -257,7 +264,6 @@ void main() {
     });
   });
 
-
   group('AfkCalorieRing', () {
     testWidgets('shows calorie total and remaining budget', (tester) async {
       await tester.pumpWidget(
@@ -297,9 +303,14 @@ void main() {
 
       expect(find.text('Protein'), findsOneWidget);
       expect(find.text('60 / 120 g'), findsOneWidget);
-      expect(tester.widget<LinearProgressIndicator>(
-        find.byType(LinearProgressIndicator),
-      ).value, 0.5);
+      expect(
+        tester
+            .widget<LinearProgressIndicator>(
+              find.byType(LinearProgressIndicator),
+            )
+            .value,
+        0.5,
+      );
     });
   });
 
@@ -326,7 +337,6 @@ void main() {
     });
   });
 
-
   group('AfkStepper', () {
     testWidgets('increments, decrements, and disables at bounds', (
       tester,
@@ -336,17 +346,18 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: StatefulBuilder(
-            builder: (context, setState) => Scaffold(
-              body: AfkStepper(
-                label: 'Quantity',
-                value: value,
-                min: 1,
-                max: 3,
-                onChanged: (next) => setState(() => value = next),
-                decreaseTooltip: 'Decrease quantity',
-                increaseTooltip: 'Increase quantity',
-              ),
-            ),
+            builder:
+                (context, setState) => Scaffold(
+                  body: AfkStepper(
+                    label: 'Quantity',
+                    value: value,
+                    min: 1,
+                    max: 3,
+                    onChanged: (next) => setState(() => value = next),
+                    decreaseTooltip: 'Decrease quantity',
+                    increaseTooltip: 'Increase quantity',
+                  ),
+                ),
           ),
         ),
       );
@@ -386,26 +397,33 @@ void main() {
 
       expect(find.text('1 item'), findsOneWidget);
       expect(
-        tester.widget<IconButton>(
-          find.descendant(
-            of: find.byType(AfkStepper),
-            matching: find.byType(IconButton),
-          ).first,
-        ).onPressed,
+        tester
+            .widget<IconButton>(
+              find
+                  .descendant(
+                    of: find.byType(AfkStepper),
+                    matching: find.byType(IconButton),
+                  )
+                  .first,
+            )
+            .onPressed,
         isNull,
       );
       expect(
-        tester.widget<IconButton>(
-          find.descendant(
-            of: find.byType(AfkStepper),
-            matching: find.byType(IconButton),
-          ).last,
-        ).onPressed,
+        tester
+            .widget<IconButton>(
+              find
+                  .descendant(
+                    of: find.byType(AfkStepper),
+                    matching: find.byType(IconButton),
+                  )
+                  .last,
+            )
+            .onPressed,
         isNull,
       );
     });
   });
-
 
   group('AfkTabBar', () {
     testWidgets('renders tabs and allows the controller to change views', (
@@ -417,9 +435,11 @@ void main() {
           home: DefaultTabController(
             length: 2,
             child: Scaffold(
-              appBar: AppBar(bottom: const AfkTabBar(
-                tabs: [Tab(text: 'Overview'), Tab(text: 'Details')],
-              )),
+              appBar: AppBar(
+                bottom: const AfkTabBar(
+                  tabs: [Tab(text: 'Overview'), Tab(text: 'Details')],
+                ),
+              ),
               body: const TabBarView(
                 children: [Text('Overview content'), Text('Details content')],
               ),
@@ -460,7 +480,6 @@ void main() {
     });
   });
 
-
   group('AfkListTile', () {
     testWidgets('shows title and subtitle and responds to taps', (
       tester,
@@ -496,29 +515,33 @@ void main() {
         MaterialApp(
           theme: AfkTheme.light(),
           home: Builder(
-            builder: (context) => Scaffold(
-              body: TextButton(
-                onPressed: () async {
-                  result = await AfkBottomSheet.show<String>(
-                    context,
-                    builder: (sheetContext) => AfkBottomSheet.content(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text('Choose an option'),
-                          TextButton(
-                            onPressed: () =>
-                                Navigator.of(sheetContext).pop('selected'),
-                            child: const Text('Select'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-                child: const Text('Open sheet'),
-              ),
-            ),
+            builder:
+                (context) => Scaffold(
+                  body: TextButton(
+                    onPressed: () async {
+                      result = await AfkBottomSheet.show<String>(
+                        context,
+                        builder:
+                            (sheetContext) => AfkBottomSheet.content(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text('Choose an option'),
+                                  TextButton(
+                                    onPressed:
+                                        () => Navigator.of(
+                                          sheetContext,
+                                        ).pop('selected'),
+                                    child: const Text('Select'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                      );
+                    },
+                    child: const Text('Open sheet'),
+                  ),
+                ),
           ),
         ),
       );
@@ -540,8 +563,14 @@ void main() {
 
     test('applies the shared typography scale', () {
       final textTheme = AfkTheme.light().textTheme;
-      expect(textTheme.headlineSmall?.fontSize, AfkTypography.pageTitle.fontSize);
-      expect(textTheme.titleLarge?.fontSize, AfkTypography.sectionTitle.fontSize);
+      expect(
+        textTheme.headlineSmall?.fontSize,
+        AfkTypography.pageTitle.fontSize,
+      );
+      expect(
+        textTheme.titleLarge?.fontSize,
+        AfkTypography.sectionTitle.fontSize,
+      );
       expect(textTheme.titleMedium?.fontSize, AfkTypography.itemTitle.fontSize);
       expect(textTheme.bodyMedium?.fontSize, AfkTypography.body.fontSize);
     });
@@ -1205,7 +1234,6 @@ void main() {
     });
   });
 
-
   group('AfkAppBar', () {
     testWidgets('renders a title with the theme surface', (tester) async {
       await tester.pumpWidget(
@@ -1230,16 +1258,23 @@ void main() {
           theme: AfkTheme.light(),
           home: Scaffold(
             bottomNavigationBar: StatefulBuilder(
-              builder: (context, setState) => AfkBottomNavigationBar(
-                selectedIndex: selected,
-                onDestinationSelected: (index) =>
-                    setState(() => selected = index),
-                items: const [
-                  AfkNavigationItem(label: 'Home', icon: Icons.home_outlined),
-                  AfkNavigationItem(label: 'Search', icon: Icons.search),
-                  AfkNavigationItem(label: 'Profile', icon: Icons.person_outline),
-                ],
-              ),
+              builder:
+                  (context, setState) => AfkBottomNavigationBar(
+                    selectedIndex: selected,
+                    onDestinationSelected:
+                        (index) => setState(() => selected = index),
+                    items: const [
+                      AfkNavigationItem(
+                        label: 'Home',
+                        icon: Icons.home_outlined,
+                      ),
+                      AfkNavigationItem(label: 'Search', icon: Icons.search),
+                      AfkNavigationItem(
+                        label: 'Profile',
+                        icon: Icons.person_outline,
+                      ),
+                    ],
+                  ),
             ),
           ),
         ),
@@ -1250,7 +1285,6 @@ void main() {
     });
   });
 
-
   group('AfkConfirmDialog', () {
     testWidgets('returns true when the confirm action is selected', (
       tester,
@@ -1259,21 +1293,22 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
-            builder: (context) => Scaffold(
-              body: TextButton(
-                onPressed: () async {
-                  result = await AfkConfirmDialog.show(
-                    context,
-                    title: 'Delete item?',
-                    message: 'This cannot be undone.',
-                    confirmLabel: 'Delete',
-                    cancelLabel: 'Cancel',
-                    destructive: true,
-                  );
-                },
-                child: const Text('Open dialog'),
-              ),
-            ),
+            builder:
+                (context) => Scaffold(
+                  body: TextButton(
+                    onPressed: () async {
+                      result = await AfkConfirmDialog.show(
+                        context,
+                        title: 'Delete item?',
+                        message: 'This cannot be undone.',
+                        confirmLabel: 'Delete',
+                        cancelLabel: 'Cancel',
+                        destructive: true,
+                      );
+                    },
+                    child: const Text('Open dialog'),
+                  ),
+                ),
           ),
         ),
       );
@@ -1292,16 +1327,18 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
-            builder: (context) => Scaffold(
-              body: TextButton(
-                onPressed: () => AfkSnackBar.show(
-                  context,
-                  message: 'Changes saved',
-                  variant: AfkSnackBarVariant.success,
+            builder:
+                (context) => Scaffold(
+                  body: TextButton(
+                    onPressed:
+                        () => AfkSnackBar.show(
+                          context,
+                          message: 'Changes saved',
+                          variant: AfkSnackBarVariant.success,
+                        ),
+                    child: const Text('Show feedback'),
+                  ),
                 ),
-                child: const Text('Show feedback'),
-              ),
-            ),
           ),
         ),
       );
@@ -1310,7 +1347,6 @@ void main() {
       expect(find.text('Changes saved'), findsOneWidget);
     });
   });
-
 
   group('AfkSearchField', () {
     testWidgets('reports input and clears the current query', (tester) async {
@@ -1341,17 +1377,12 @@ void main() {
     });
   });
 
-
   group('AfkProgressBar', () {
     testWidgets('shows a label and determinate percentage', (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: AfkProgressBar(
-              value: 0.6,
-              label: 'Upload',
-              showValue: true,
-            ),
+            body: AfkProgressBar(value: 0.6, label: 'Upload', showValue: true),
           ),
         ),
       );

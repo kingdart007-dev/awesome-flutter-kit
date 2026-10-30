@@ -14,9 +14,7 @@ class AfkTabBar extends StatelessWidget implements PreferredSizeWidget {
     this.controller,
     this.isScrollable = false,
     this.onTap,
-    this.labelPadding = const EdgeInsets.symmetric(
-      horizontal: AfkSpacing.md,
-    ),
+    this.labelPadding = const EdgeInsets.symmetric(horizontal: AfkSpacing.md),
     super.key,
   });
 

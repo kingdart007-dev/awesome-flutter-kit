@@ -42,18 +42,14 @@ class AfkStepper extends StatelessWidget {
 
     return Row(
       children: [
-        Expanded(
-          child: Text(label, style: theme.textTheme.bodyLarge),
-        ),
+        Expanded(child: Text(label, style: theme.textTheme.bodyLarge)),
         IconButton(
           tooltip: decreaseTooltip,
-          onPressed: canDecrease
-              ? () => onChanged!((value - step).clamp(min, max).toInt())
-              : null,
-          constraints: const BoxConstraints(
-            minWidth: 48,
-            minHeight: 48,
-          ),
+          onPressed:
+              canDecrease
+                  ? () => onChanged!((value - step).clamp(min, max).toInt())
+                  : null,
+          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
           style: IconButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AfkRadius.md),
@@ -80,13 +76,11 @@ class AfkStepper extends StatelessWidget {
         const SizedBox(width: AfkSpacing.xs),
         IconButton(
           tooltip: increaseTooltip,
-          onPressed: canIncrease
-              ? () => onChanged!((value + step).clamp(min, max).toInt())
-              : null,
-          constraints: const BoxConstraints(
-            minWidth: 48,
-            minHeight: 48,
-          ),
+          onPressed:
+              canIncrease
+                  ? () => onChanged!((value + step).clamp(min, max).toInt())
+                  : null,
+          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
           style: IconButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AfkRadius.md),

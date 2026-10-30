@@ -47,18 +47,17 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
     final theme = Theme.of(context);
     final reduceMotion = MediaQuery.of(context).disableAnimations;
     final duration = reduceMotion ? Duration.zero : AfkMotion.normal;
-    final tooltip = _expanded
-        ? widget.collapseTooltip
-        : widget.expandTooltip;
-    final disclosure = _expanded
-        ? Padding(
-            padding: const EdgeInsets.only(
-              top: AfkSpacing.xs,
-              bottom: AfkSpacing.md,
-            ),
-            child: widget.child,
-          )
-        : const SizedBox.shrink();
+    final tooltip = _expanded ? widget.collapseTooltip : widget.expandTooltip;
+    final disclosure =
+        _expanded
+            ? Padding(
+              padding: const EdgeInsets.only(
+                top: AfkSpacing.xs,
+                bottom: AfkSpacing.md,
+              ),
+              child: widget.child,
+            )
+            : const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -91,18 +90,19 @@ class _AfkExpandableSectionState extends State<AfkExpandableSection> {
                       turns: _expanded ? 0.5 : 0,
                       duration: duration,
                       curve: AfkMotion.standard,
-                      child: tooltip == null
-                          ? Icon(
-                              Icons.expand_more,
-                              color: theme.colorScheme.onSurfaceVariant,
-                            )
-                          : Tooltip(
-                              message: tooltip,
-                              child: Icon(
+                      child:
+                          tooltip == null
+                              ? Icon(
                                 Icons.expand_more,
                                 color: theme.colorScheme.onSurfaceVariant,
+                              )
+                              : Tooltip(
+                                message: tooltip,
+                                child: Icon(
+                                  Icons.expand_more,
+                                  color: theme.colorScheme.onSurfaceVariant,
+                                ),
                               ),
-                            ),
                     ),
                   ],
                 ),

@@ -61,13 +61,13 @@ class AfkNutritionHero extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Text(
-                    title,
-                    style: theme.textTheme.titleMedium,
-                  ),
+                  child: Text(title, style: theme.textTheme.titleMedium),
                 ),
-                Icon(Icons.auto_awesome_outlined,
-                    size: 18, color: colors.onSurfaceVariant),
+                Icon(
+                  Icons.auto_awesome_outlined,
+                  size: 18,
+                  color: colors.onSurfaceVariant,
+                ),
               ],
             ),
             const SizedBox(height: AfkSpacing.lg),
@@ -101,7 +101,9 @@ class AfkNutritionHero extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      isOverGoal ? '+${remaining.abs()}' : '${remaining.clamp(0, goal.round())}',
+                      isOverGoal
+                          ? '+${remaining.abs()}'
+                          : '${remaining.clamp(0, goal.round())}',
                       style: theme.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                         fontFeatures: const [FontFeature.tabularFigures()],
