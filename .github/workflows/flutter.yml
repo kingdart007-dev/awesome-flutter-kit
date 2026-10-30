@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -27,8 +27,22 @@ jobs:
       - name: Resolve example dependencies
         working-directory: example
         run: flutter pub get
+      - name: One-time repository formatting
+        if: github.event.head_commit.message == 'chore: one-time Dart formatting'
+        run: dart format .
       - name: Check Dart formatting
+        if: github.event.head_commit.message != 'chore: one-time Dart formatting'
         run: dart format --output=none --set-exit-if-changed .
+      - name: Commit one-time formatting
+        if: github.event.head_commit.message == 'chore: one-time Dart formatting'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.dart'
+          if ! git diff --cached --quiet; then
+            git commit -m "style: format Dart sources"
+            git push
+          fi
       - name: Analyze package
         run: flutter analyze
       - name: Test package
