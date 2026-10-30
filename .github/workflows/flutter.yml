@@ -22,14 +22,17 @@ jobs:
         with:
           channel: stable
           cache: true
-      - run: flutter pub get
-      - name: Format Dart sources
-        run: dart format .
-      - run: flutter analyze
-      - run: flutter test
+      - name: Resolve package dependencies
+        run: flutter pub get
       - name: Resolve example dependencies
         working-directory: example
         run: flutter pub get
+      - name: Check Dart formatting
+        run: dart format --output=none --set-exit-if-changed .
+      - name: Analyze package
+        run: flutter analyze
+      - name: Test package
+        run: flutter test
       - name: Analyze example app
         working-directory: example
         run: flutter analyze
