@@ -93,6 +93,7 @@ class AfkButton extends StatelessWidget {
     return Semantics(
       button: true,
       enabled: enabled,
+      busy: isLoading,
       label: label,
       child: expand ? SizedBox(width: double.infinity, child: button) : button,
     );
